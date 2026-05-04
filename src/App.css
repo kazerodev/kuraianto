@@ -1,0 +1,63 @@
+/* Aplica estilos globales */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Personalización de la app */
+body {
+  @apply bg-white text-gray-900;
+}
+
+/* Contenedor principal */
+.app-container {
+  @apply flex flex-col min-h-screen;
+}
+
+/* Contenido principal */
+.main-content {
+  @apply flex-grow;
+}
+
+/* Botones generales */
+.btn {
+  @apply bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300;
+}
+.btn:hover {
+  @apply bg-blue-700;
+}
+
+/* Tablas */
+table {
+  @apply w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden;
+}
+
+th, td {
+  @apply p-4 border-b border-gray-300 text-left;
+}
+
+th {
+  @apply bg-gray-200 text-gray-700 font-semibold;
+}
+
+/* Formularios */
+input, select {
+  @apply border border-gray-300 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Navbar */
+.navbar {
+  @apply bg-white shadow-md py-4 px-6 flex justify-between items-center;
+}
+
+.navbar a {
+  @apply text-gray-800 font-semibold px-4 py-2 transition-all duration-200;
+}
+
+.navbar a:hover {
+  @apply text-blue-600;
+}
+
+/* Footer */
+.footer {
+  @apply bg-gray-800 text-white text-center py-4 mt-8;
+}
