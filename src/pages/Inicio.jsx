@@ -450,6 +450,11 @@ function Inicio() {
                         target="_blank"
                         rel="noopener noreferrer"
                         data-event={`stripe-${plan.id}`}
+                        onClick={() => {
+                          const vals = { starter: 349, pro: 649, marketing: 1099 };
+                          if (window.fbq) window.fbq("track", "InitiateCheckout", { value: vals[plan.id] || 349, currency: "EUR", content_name: plan.name, content_ids: [plan.id] });
+                          if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: plan.id, value: vals[plan.id] });
+                        }}
                         className={`block text-center font-bold py-4 rounded-full text-sm transition-all duration-200 hover:-translate-y-0.5 ${plan.popular ? "bg-orange-500 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35" : "bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/20 hover:border-orange-500/40"}`}
                       >
                         {t.pricing.cta_pay} — {plan.price}

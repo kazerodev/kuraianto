@@ -7,6 +7,7 @@ import Politicas from "./pages/Politicas";
 import DisenoWeb from "./pages/DisenoWeb";
 import SeoLocal from "./pages/SeoLocal";
 import GoogleAds from "./pages/GoogleAds";
+import Gracias from "./pages/Gracias";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
@@ -27,6 +28,7 @@ const App: React.FC = () => {
                 <Route path="/diseno-web" element={<DisenoWeb />} />
                 <Route path="/seo-local" element={<SeoLocal />} />
                 <Route path="/google-ads" element={<GoogleAds />} />
+                <Route path="/gracias" element={<Gracias />} />
               </Routes>
             </main>
             <Footer />

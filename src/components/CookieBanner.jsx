@@ -14,7 +14,11 @@ export default function CookieBanner() {
     }
   }, []);
 
-  const accept = () => { localStorage.setItem(STORAGE_KEY, "accepted"); setShow(false); };
+  const accept = () => {
+    localStorage.setItem(STORAGE_KEY, "accepted");
+    setShow(false);
+    if (window.fbq) { window.fbq("track", "PageView"); }
+  };
   const decline = () => { localStorage.setItem(STORAGE_KEY, "declined"); setShow(false); };
 
   if (!show) return null;
