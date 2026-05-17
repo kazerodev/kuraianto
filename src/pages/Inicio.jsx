@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import { useLang } from "../context/LangContext";
 
 const WA_BASE = "https://wa.me/32485251110";
@@ -288,9 +287,9 @@ function Inicio() {
       <section className="bg-neutral-950 py-16">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <Reveal className="mb-10 text-center">
-            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">El problema</span>
+            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.antes_despues.label}</span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 leading-tight">
-              ¿Reconoces tu web actual?
+              {t.antes_despues.title}
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -298,17 +297,10 @@ function Inicio() {
               <div className="rounded-2xl border border-red-500/15 bg-red-500/[0.03] p-6 sm:p-7 h-full">
                 <div className="flex items-center gap-2 mb-5">
                   <span className="w-2 h-2 rounded-full bg-red-500/60 flex-shrink-0" />
-                  <span className="text-red-400/80 text-xs font-bold uppercase tracking-widest">Web que pierde clientes</span>
+                  <span className="text-red-400/80 text-xs font-bold uppercase tracking-widest">{t.antes_despues.bad_label}</span>
                 </div>
                 <ul className="space-y-3">
-                  {[
-                    "Tarda más de 3 segundos en cargar",
-                    "Se ve mal o incompleta en el móvil",
-                    "No tiene WhatsApp ni formulario visible",
-                    "No aparece en Google cuando te buscan",
-                    "Parece anticuada o no inspira confianza",
-                    "No has tocado nada desde hace años",
-                  ].map((item) => (
+                  {t.antes_despues.bad_items.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-neutral-500 text-sm">
                       <span className="text-red-500/50 flex-shrink-0 mt-0.5 font-bold">✕</span>
                       {item}
@@ -321,17 +313,10 @@ function Inicio() {
               <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.04] p-6 sm:p-7 h-full flex flex-col">
                 <div className="flex items-center gap-2 mb-5">
                   <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse flex-shrink-0" />
-                  <span className="text-orange-400 text-xs font-bold uppercase tracking-widest">Tu web Kuraianto · desde 349€</span>
+                  <span className="text-orange-400 text-xs font-bold uppercase tracking-widest">{t.antes_despues.good_label}</span>
                 </div>
                 <ul className="space-y-3 flex-1">
-                  {[
-                    "Carga en menos de 2 segundos",
-                    "Perfecta en móvil y escritorio",
-                    "WhatsApp con un clic + formulario visible",
-                    "SEO básico configurado desde el primer día",
-                    "Diseño moderno que genera confianza",
-                    "Lista en 7 días, sin complicaciones",
-                  ].map((item) => (
+                  {t.antes_despues.good_items.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-neutral-300 text-sm">
                       <span className="text-orange-500 flex-shrink-0 mt-0.5 font-bold">✓</span>
                       {item}
@@ -343,7 +328,7 @@ function Inicio() {
                   data-event="antes-despues-cta"
                   className="mt-6 inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-4 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full"
                 >
-                  Quiero esto para mi negocio →
+                  {t.antes_despues.cta}
                 </a>
               </div>
             </Reveal>
@@ -598,6 +583,40 @@ function Inicio() {
         </div>
       </section>
 
+      {/* ── CTA FINAL URGENCY ────────────────────────────────── */}
+      <section className="relative bg-neutral-950 py-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 50%, rgba(249,115,22,0.08) 0%, transparent 65%)" }} />
+        <div className="relative z-10 max-w-4xl mx-auto px-5 lg:px-10 text-center">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-1.5 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
+              <span className="text-orange-400 text-xs font-bold tracking-widest uppercase">{t.cta_final.badge}</span>
+            </div>
+            <p className="text-neutral-500 text-xs font-semibold tracking-widest uppercase mb-4">{t.cta_final.urgency}</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-4">{t.cta_final.title}</h2>
+            <p className="text-neutral-400 text-sm leading-relaxed mb-10 max-w-lg mx-auto">{t.cta_final.desc}</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="#planes"
+                data-event="cta-final-plans"
+                className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto"
+              >
+                {t.pricing.cta_pay} →
+              </a>
+              <a
+                href={wa(t.cta_final.demo_msg)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="cta-final-wa"
+                className="inline-flex items-center justify-center gap-2 border border-white/15 text-white font-semibold px-8 py-4 rounded-full text-sm transition-all hover:bg-white/[0.05] hover:border-white/30 w-full sm:w-auto"
+              >
+                {t.cta_final.cta_demo}
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── WHY US ───────────────────────────────────────────── */}
       <section className="bg-neutral-900 py-24">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
@@ -678,83 +697,6 @@ function Inicio() {
               <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
             </a>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ── SERVICES ─────────────────────────────────────────── */}
-      <section id="servicios" className="bg-neutral-900 py-24">
-        <div className="max-w-7xl mx-auto px-5 lg:px-10">
-
-          <Reveal className="mb-12">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-              <div>
-                <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.services.label}</span>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight max-w-lg">{t.services.title}</h2>
-              </div>
-              <a
-                href={wa(t.services.cta_msg)}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-event="services-cta"
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 whitespace-nowrap flex-shrink-0 shadow-md shadow-orange-500/20"
-              >
-                {t.services.cta}
-                <span>→</span>
-              </a>
-            </div>
-          </Reveal>
-
-          {(() => {
-            const SERVICE_LINKS = ["/diseno-web", "/seo-local", "/google-ads"];
-            return (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {t.services.items.map((s, i) => (
-                  <Reveal key={s.title} delay={i * 60}>
-                    <div className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 hover:border-orange-500/30 hover:bg-orange-500/[0.04] transition-all duration-300 cursor-default flex flex-col h-full">
-                      <div className="flex items-start justify-between mb-6">
-                        <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[12px] font-black tabular-nums flex-shrink-0">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="text-neutral-700 text-lg group-hover:text-orange-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-250 select-none">→</span>
-                      </div>
-                      <h3 className="text-white font-bold text-[17px] mb-3 leading-snug">{s.title}</h3>
-                      <p className="text-neutral-400 text-sm leading-relaxed flex-1">{s.desc}</p>
-                      {SERVICE_LINKS[i] && (
-                        <Link to={SERVICE_LINKS[i]} className="mt-5 inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 text-xs font-semibold transition-colors cursor-pointer">
-                          {t.services.learn_more} →
-                        </Link>
-                      )}
-                      <div className="mt-4 h-px bg-white/[0.04] overflow-hidden rounded-full">
-                        <div className="h-full bg-orange-500/50 w-0 group-hover:w-full transition-all duration-500 ease-out" />
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            );
-          })()}
-
-          <Reveal delay={300} className="mt-8">
-            <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] px-7 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center flex-shrink-0">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 7l3.5 3.5L12 3" stroke="#f97316" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <p className="text-neutral-300 text-sm font-medium">{t.services.fixed_prices}</p>
-              </div>
-              <a
-                href="#planes"
-                data-event="services-to-plans"
-                className="group inline-flex items-center gap-2 text-sm font-bold text-orange-500 hover:text-orange-400 transition-colors whitespace-nowrap"
-              >
-                {t.services.plans_link}
-                <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
-              </a>
-            </div>
-          </Reveal>
-
         </div>
       </section>
 
