@@ -99,18 +99,15 @@ function ContactForm() {
   const [nombre, setNombre] = useState("");
   const [contacto, setContacto] = useState("");
   const [servicio, setServicio] = useState("");
-  const [tieneWeb, setTieneWeb] = useState("");
   const [mensaje, setMensaje] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const intro = { es: `Hola, me llamo ${nombre}.`, en: `Hi, my name is ${nombre}.`, nl: `Hallo, mijn naam is ${nombre}.`, fr: `Bonjour, je m'appelle ${nombre}.` };
     const interestLine = { es: `Me interesa: ${servicio}.`, en: `I'm interested in: ${servicio}.`, nl: `Ik ben geïnteresseerd in: ${servicio}.`, fr: `Je suis intéressé par : ${servicio}.` };
-    const webLine = { es: `Web actual: ${tieneWeb}.`, en: `Current website: ${tieneWeb}.`, nl: `Huidige website: ${tieneWeb}.`, fr: `Site actuel : ${tieneWeb}.` };
     const contactoLine = { es: `Teléfono/email: ${contacto}.`, en: `Phone/email: ${contacto}.`, nl: `Telefoon/e-mail: ${contacto}.`, fr: `Téléphone/e-mail : ${contacto}.` };
     const parts = [intro[lang] || intro.en];
     if (servicio) parts.push(interestLine[lang] || interestLine.en);
-    if (tieneWeb) parts.push(webLine[lang] || webLine.en);
     if (contacto) parts.push(contactoLine[lang] || contactoLine.en);
     if (mensaje) parts.push(mensaje);
     window.open(`${WA_BASE}?text=${encodeURIComponent(parts.join(" "))}`, "_blank");
@@ -122,16 +119,10 @@ function ContactForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
       <input type="text" placeholder={f.name} value={nombre} onChange={(e) => setNombre(e.target.value)} required className={field} />
       <input type="text" placeholder={f.phone} value={contacto} onChange={(e) => setContacto(e.target.value)} className={field} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-        <select value={servicio} onChange={(e) => setServicio(e.target.value)} className={`${field} appearance-none cursor-pointer`}>
-          <option value="">{f.service}</option>
-          {f.opts.map((o) => <option key={o} value={o}>{o}</option>)}
-        </select>
-        <select value={tieneWeb} onChange={(e) => setTieneWeb(e.target.value)} className={`${field} appearance-none cursor-pointer`}>
-          <option value="">{f.website}</option>
-          {f.website_opts.map((o) => <option key={o} value={o}>{o}</option>)}
-        </select>
-      </div>
+      <select value={servicio} onChange={(e) => setServicio(e.target.value)} className={`${field} appearance-none cursor-pointer`}>
+        <option value="">{f.service}</option>
+        {f.opts.map((o) => <option key={o} value={o}>{o}</option>)}
+      </select>
       <textarea placeholder={f.msg_placeholder} value={mensaje} onChange={(e) => setMensaje(e.target.value)} rows={3} className={`${field} resize-none`} />
       <button
         type="submit"
@@ -167,6 +158,15 @@ function Inicio() {
         <meta property="og:url" content="https://kuraianto.com/" />
         <meta property="og:image" content="https://kuraianto.com/og-image.png" />
         <meta property="og:locale" content={lang === "es" ? "es_ES" : lang === "en" ? "en_GB" : lang === "nl" ? "nl_BE" : "fr_BE"} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": t.faq.items.map((item) => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": { "@type": "Answer", "text": item.a }
+          }))
+        })}</script>
       </Helmet>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
@@ -441,6 +441,24 @@ function Inicio() {
               </Reveal>
             ))}
           </div>
+
+          {/* Guarantee strip */}
+          <Reveal delay={160} className="mb-8">
+            <div className="rounded-2xl border border-green-500/15 bg-green-500/[0.04] px-6 py-5 flex flex-wrap items-center gap-5 justify-center sm:justify-between">
+              <p className="text-green-400 text-xs font-bold uppercase tracking-widest">{t.pricing.guarantee_title}</p>
+              <div className="flex flex-wrap items-center gap-4">
+                {t.pricing.guarantee_items.map((item) => (
+                  <span key={item} className="flex items-center gap-2 text-neutral-400 text-xs">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="flex-shrink-0">
+                      <circle cx="7" cy="7" r="5.5" stroke="rgba(34,197,94,0.4)" strokeWidth="1"/>
+                      <path d="M4.5 7l2 2 3-3.5" stroke="#22c55e" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
 
           <Reveal delay={200}>
             <div className="mt-10 pt-10 border-t border-white/[0.06]">
@@ -830,19 +848,23 @@ function Inicio() {
       </section>
 
       {/* ── FLOATING WA ──────────────────────────────────────── */}
-      <a
-        href={WA_BASE}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-event="wa-float"
-        aria-label="WhatsApp"
-        className="fixed bottom-5 right-4 z-50 inline-flex items-center gap-2 bg-green-500 text-white font-bold px-4 sm:px-5 py-3 rounded-full shadow-2xl text-sm transition-all hover:bg-green-400 hover:-translate-y-0.5 hover:shadow-green-500/40"
-      >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg>
-        WhatsApp
-      </a>
+      <div className="fixed bottom-5 right-4 z-50 flex flex-col items-end gap-2">
+        <a
+          href={WA_BASE}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-event="wa-float"
+          aria-label="WhatsApp"
+          className="relative inline-flex items-center gap-2 bg-green-500 text-white font-bold px-4 sm:px-5 py-3 rounded-full shadow-2xl text-sm transition-all hover:bg-green-400 hover:-translate-y-0.5"
+          style={{ boxShadow: "0 4px 24px rgba(34,197,94,0.45)" }}
+        >
+          <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-25 pointer-events-none" />
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          WhatsApp
+        </a>
+      </div>
 
     </div>
   );
