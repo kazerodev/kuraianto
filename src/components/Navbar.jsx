@@ -109,11 +109,10 @@ export default function Navbar() {
   const isHome = location.pathname === "/";
 
   const links = [
-    { href: isHome ? "#servicios" : "/#servicios", label: t.nav.services },
-    { href: isHome ? "#planes"    : "/#planes",    label: t.nav.plans    },
-    { href: isHome ? "#clientes"  : "/#clientes",  label: t.nav.clients  },
-    { href: isHome ? "#faq"       : "/#faq",       label: t.nav.faq      },
-    { href: isHome ? "#contacto"  : "/#contacto",  label: t.nav.contact  },
+    { href: isHome ? "#planes"   : "/#planes",   label: t.nav.plans   },
+    { href: isHome ? "#clientes" : "/#clientes", label: t.nav.clients },
+    { href: isHome ? "#faq"      : "/#faq",      label: t.nav.faq     },
+    { href: isHome ? "#contacto" : "/#contacto", label: t.nav.contact },
   ];
 
   const demoHref = `${WA_BASE}?text=${encodeURIComponent(t.hero?.demo_msg || "")}`;
