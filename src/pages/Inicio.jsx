@@ -367,281 +367,6 @@ function Inicio() {
         </div>
       </section>
 
-      {/* ── SERVICES ─────────────────────────────────────────── */}
-      <section id="servicios" className="bg-neutral-950 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-
-          {/* Section header */}
-          <Reveal className="mb-12">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-              <div>
-                <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.services.label}</span>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight max-w-lg">{t.services.title}</h2>
-              </div>
-              <a
-                href={wa(t.services.cta_msg)}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-event="services-cta"
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 whitespace-nowrap flex-shrink-0 shadow-md shadow-orange-500/20"
-              >
-                {t.services.cta}
-                <span>→</span>
-              </a>
-            </div>
-          </Reveal>
-
-          {/* Service cards — 3 × 2 grid */}
-          {(() => {
-            const SERVICE_LINKS = ["/diseno-web", "/seo-local", "/google-ads"];
-            return (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {t.services.items.map((s, i) => (
-                  <Reveal key={s.title} delay={i * 60}>
-                    <div className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 hover:border-orange-500/30 hover:bg-orange-500/[0.04] transition-all duration-300 cursor-default flex flex-col h-full">
-                      {/* Number badge + arrow */}
-                      <div className="flex items-start justify-between mb-6">
-                        <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[12px] font-black tabular-nums flex-shrink-0">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="text-neutral-700 text-lg group-hover:text-orange-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-250 select-none">→</span>
-                      </div>
-                      {/* Content */}
-                      <h3 className="text-white font-bold text-[17px] mb-3 leading-snug">{s.title}</h3>
-                      <p className="text-neutral-400 text-sm leading-relaxed flex-1">{s.desc}</p>
-                      {/* Learn more link — only for first 3 cards */}
-                      {SERVICE_LINKS[i] && (
-                        <Link to={SERVICE_LINKS[i]} className="mt-5 inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 text-xs font-semibold transition-colors cursor-pointer">
-                          {t.services.learn_more} →
-                        </Link>
-                      )}
-                      {/* Slide-in accent line on hover */}
-                      <div className="mt-4 h-px bg-white/[0.04] overflow-hidden rounded-full">
-                        <div className="h-full bg-orange-500/50 w-0 group-hover:w-full transition-all duration-500 ease-out" />
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            );
-          })()}
-
-          {/* Trust + plans CTA bar */}
-          <Reveal delay={300} className="mt-8">
-            <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] px-7 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center flex-shrink-0">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 7l3.5 3.5L12 3" stroke="#f97316" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <p className="text-neutral-300 text-sm font-medium">{t.services.fixed_prices}</p>
-              </div>
-              <a
-                href="#planes"
-                data-event="services-to-plans"
-                className="group inline-flex items-center gap-2 text-sm font-bold text-orange-500 hover:text-orange-400 transition-colors whitespace-nowrap"
-              >
-                {t.services.plans_link}
-                <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
-              </a>
-            </div>
-          </Reveal>
-
-        </div>
-      </section>
-
-      {/* ── WHY US ───────────────────────────────────────────── */}
-      <section className="bg-neutral-900 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20 items-start">
-
-            {/* Left: sticky header + CTA */}
-            <Reveal className="lg:col-span-4">
-              <div className="lg:sticky lg:top-32">
-                <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">{t.why.label}</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-5 leading-tight">{t.why.title}</h2>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-8">{t.why.desc}</p>
-                <a
-                  href={wa(t.why.cta_msg)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-event="why-demo-cta"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 shadow-md shadow-orange-500/20"
-                >
-                  {t.why.cta}
-                  <span>→</span>
-                </a>
-              </div>
-            </Reveal>
-
-            {/* Right: 2×2 feature cards */}
-            <Reveal className="lg:col-span-8" delay={100}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {t.why.items.map((item, i) => (
-                  <div
-                    key={item.title}
-                    className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 hover:border-orange-500/25 hover:bg-orange-500/[0.04] transition-all duration-300 cursor-default"
-                  >
-                    <div className="flex items-start justify-between mb-6">
-                      <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[12px] font-black tabular-nums flex-shrink-0">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <h3 className="text-white font-bold text-[16px] mb-3 leading-snug">{item.title}</h3>
-                    <p className="text-neutral-400 text-sm leading-relaxed">{item.desc}</p>
-                    <div className="mt-6 h-px bg-white/[0.04] overflow-hidden rounded-full">
-                      <div className="h-full bg-orange-500/40 w-0 group-hover:w-full transition-all duration-500 ease-out" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ── DEMO CTA ─────────────────────────────────────────── */}
-      <section className="relative bg-orange-500 py-16 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at top right, rgba(0,0,0,0.18) 0%, transparent 60%)" }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at bottom left, rgba(234,88,12,0.5) 0%, transparent 55%)" }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div>
-              <span className="inline-flex items-center gap-2 bg-black/15 rounded-full px-3 py-1 mb-4 text-xs font-bold text-black/70 uppercase tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
-                {t.demo_bar.badge}
-              </span>
-              <h3 className="text-3xl md:text-4xl font-black text-black leading-tight max-w-xl">{t.demo_bar.title}</h3>
-              <p className="text-black/60 text-sm mt-2 max-w-lg">{t.demo_bar.desc}</p>
-              <p className="text-black/40 text-xs mt-3 font-medium">{t.demo_bar.subtext}</p>
-            </div>
-            <a
-              href={wa(t.demo_bar.msg)}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-event="demobar-cta"
-              className="flex-shrink-0 inline-flex items-center gap-2 bg-black text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-neutral-900 transition-all hover:-translate-y-0.5 hover:shadow-2xl whitespace-nowrap"
-            >
-              {t.demo_bar.cta} →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PROCESS ──────────────────────────────────────────── */}
-      <section className="bg-neutral-950 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <Reveal className="mb-14">
-            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.process.label}</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.process.title}</h2>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.process.steps.map((step, i) => (
-              <Reveal key={step.num} delay={i * 120}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-8 flex flex-col h-full">
-                  <div className="text-[4rem] font-black tabular-nums text-orange-500/50 leading-none mb-4">{step.num}</div>
-                  <div className="w-10 h-0.5 bg-orange-500 mb-6" />
-                  <h3 className="font-bold text-white text-lg mb-3 leading-snug">{step.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{step.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={300} className="mt-12 text-center">
-            <a
-              href={wa(t.process.cta_msg)}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-event="process-cta"
-              className="group inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold px-8 py-4 rounded-full text-sm transition-all duration-200 shadow-lg shadow-orange-500/25"
-            >
-              {t.process.cta}
-              <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
-            </a>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── CLIENTS ──────────────────────────────────────────── */}
-      <section id="clientes" className="bg-neutral-950 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-
-          {/* Header */}
-          <Reveal className="mb-14">
-            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.clients.label}</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.clients.title}</h2>
-            <p className="text-neutral-400 mt-3 text-sm max-w-lg">{t.clients.desc}</p>
-          </Reveal>
-
-          {/* Project cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {t.clients.items.map((client, i) => (
-              <Reveal key={client.name} delay={i * 80}>
-                <a
-                  href={client.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-event={`client-${client.name.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 flex flex-col h-full hover:border-orange-500/30 hover:bg-orange-500/[0.04] transition-all duration-300"
-                >
-                  {/* Domain + number */}
-                  <div className="flex items-start justify-between mb-6">
-                    <span className="text-orange-400/70 text-[11px] font-mono tracking-tight leading-none">
-                      {client.url.replace("https://", "").replace(/\/$/, "")}
-                    </span>
-                    <span className="text-neutral-700 text-[11px] font-black tabular-nums flex-shrink-0 ml-3">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-
-                  {/* Client info */}
-                  <h3 className="font-bold text-white text-xl mb-3 leading-snug">{client.name}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{client.desc}</p>
-
-                  {/* Visit link */}
-                  <div className="mt-7 pt-5 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-orange-400 group-hover:text-orange-300 group-hover:gap-3 transition-all duration-200">
-                      {t.clients.visit}
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="flex-shrink-0">
-                        <path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                    <div className="w-8 h-8 rounded-full border border-white/[0.08] flex items-center justify-center text-neutral-600 group-hover:bg-orange-500 group-hover:border-orange-500 group-hover:text-white transition-all duration-300 text-sm flex-shrink-0">
-                      ↗
-                    </div>
-                  </div>
-                </a>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Bottom CTA */}
-          <Reveal delay={200} className="mt-10">
-            <div className="rounded-2xl border border-orange-500/20 p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
-              style={{ background: "linear-gradient(135deg, rgba(249,115,22,0.08) 0%, rgba(249,115,22,0.03) 60%, transparent 100%)" }}
-            >
-              <div>
-                <p className="text-white font-bold text-lg mb-1.5">{t.clients.bottom_q}</p>
-                <p className="text-neutral-400 text-sm leading-relaxed max-w-md">{t.clients.bottom_desc}</p>
-              </div>
-              <a
-                href={wa(t.cta_final.demo_msg)}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-event="clients-to-demo"
-                className="flex-shrink-0 inline-flex items-center gap-2.5 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-7 py-4 rounded-full transition-all duration-200 whitespace-nowrap hover:-translate-y-0.5 shadow-lg shadow-orange-500/20"
-              >
-                {t.clients.bottom_cta}
-                <span>→</span>
-              </a>
-            </div>
-          </Reveal>
-
-        </div>
-      </section>
-
       {/* ── PRICING ──────────────────────────────────────────── */}
       <section id="planes" className="bg-neutral-950 py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -810,6 +535,281 @@ function Inicio() {
 
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ── WHY US ───────────────────────────────────────────── */}
+      <section className="bg-neutral-900 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20 items-start">
+
+            {/* Left: sticky header + CTA */}
+            <Reveal className="lg:col-span-4">
+              <div className="lg:sticky lg:top-32">
+                <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">{t.why.label}</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-5 leading-tight">{t.why.title}</h2>
+                <p className="text-neutral-400 text-sm leading-relaxed mb-8">{t.why.desc}</p>
+                <a
+                  href={wa(t.why.cta_msg)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event="why-demo-cta"
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 shadow-md shadow-orange-500/20"
+                >
+                  {t.why.cta}
+                  <span>→</span>
+                </a>
+              </div>
+            </Reveal>
+
+            {/* Right: 2×2 feature cards */}
+            <Reveal className="lg:col-span-8" delay={100}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {t.why.items.map((item, i) => (
+                  <div
+                    key={item.title}
+                    className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 hover:border-orange-500/25 hover:bg-orange-500/[0.04] transition-all duration-300 cursor-default"
+                  >
+                    <div className="flex items-start justify-between mb-6">
+                      <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[12px] font-black tabular-nums flex-shrink-0">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="text-white font-bold text-[16px] mb-3 leading-snug">{item.title}</h3>
+                    <p className="text-neutral-400 text-sm leading-relaxed">{item.desc}</p>
+                    <div className="mt-6 h-px bg-white/[0.04] overflow-hidden rounded-full">
+                      <div className="h-full bg-orange-500/40 w-0 group-hover:w-full transition-all duration-500 ease-out" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── SERVICES ─────────────────────────────────────────── */}
+      <section id="servicios" className="bg-neutral-950 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+
+          {/* Section header */}
+          <Reveal className="mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+              <div>
+                <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.services.label}</span>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight max-w-lg">{t.services.title}</h2>
+              </div>
+              <a
+                href={wa(t.services.cta_msg)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="services-cta"
+                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 whitespace-nowrap flex-shrink-0 shadow-md shadow-orange-500/20"
+              >
+                {t.services.cta}
+                <span>→</span>
+              </a>
+            </div>
+          </Reveal>
+
+          {/* Service cards — 3 × 2 grid */}
+          {(() => {
+            const SERVICE_LINKS = ["/diseno-web", "/seo-local", "/google-ads"];
+            return (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {t.services.items.map((s, i) => (
+                  <Reveal key={s.title} delay={i * 60}>
+                    <div className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 hover:border-orange-500/30 hover:bg-orange-500/[0.04] transition-all duration-300 cursor-default flex flex-col h-full">
+                      {/* Number badge + arrow */}
+                      <div className="flex items-start justify-between mb-6">
+                        <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[12px] font-black tabular-nums flex-shrink-0">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-neutral-700 text-lg group-hover:text-orange-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-250 select-none">→</span>
+                      </div>
+                      {/* Content */}
+                      <h3 className="text-white font-bold text-[17px] mb-3 leading-snug">{s.title}</h3>
+                      <p className="text-neutral-400 text-sm leading-relaxed flex-1">{s.desc}</p>
+                      {/* Learn more link — only for first 3 cards */}
+                      {SERVICE_LINKS[i] && (
+                        <Link to={SERVICE_LINKS[i]} className="mt-5 inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 text-xs font-semibold transition-colors cursor-pointer">
+                          {t.services.learn_more} →
+                        </Link>
+                      )}
+                      {/* Slide-in accent line on hover */}
+                      <div className="mt-4 h-px bg-white/[0.04] overflow-hidden rounded-full">
+                        <div className="h-full bg-orange-500/50 w-0 group-hover:w-full transition-all duration-500 ease-out" />
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            );
+          })()}
+
+          {/* Trust + plans CTA bar */}
+          <Reveal delay={300} className="mt-8">
+            <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] px-7 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center flex-shrink-0">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7l3.5 3.5L12 3" stroke="#f97316" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <p className="text-neutral-300 text-sm font-medium">{t.services.fixed_prices}</p>
+              </div>
+              <a
+                href="#planes"
+                data-event="services-to-plans"
+                className="group inline-flex items-center gap-2 text-sm font-bold text-orange-500 hover:text-orange-400 transition-colors whitespace-nowrap"
+              >
+                {t.services.plans_link}
+                <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
+              </a>
+            </div>
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* ── DEMO CTA ─────────────────────────────────────────── */}
+      <section className="relative bg-orange-500 py-16 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at top right, rgba(0,0,0,0.18) 0%, transparent 60%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at bottom left, rgba(234,88,12,0.5) 0%, transparent 55%)" }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+              <span className="inline-flex items-center gap-2 bg-black/15 rounded-full px-3 py-1 mb-4 text-xs font-bold text-black/70 uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
+                {t.demo_bar.badge}
+              </span>
+              <h3 className="text-3xl md:text-4xl font-black text-black leading-tight max-w-xl">{t.demo_bar.title}</h3>
+              <p className="text-black/60 text-sm mt-2 max-w-lg">{t.demo_bar.desc}</p>
+              <p className="text-black/40 text-xs mt-3 font-medium">{t.demo_bar.subtext}</p>
+            </div>
+            <a
+              href={wa(t.demo_bar.msg)}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event="demobar-cta"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-black text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-neutral-900 transition-all hover:-translate-y-0.5 hover:shadow-2xl whitespace-nowrap"
+            >
+              {t.demo_bar.cta} →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROCESS ──────────────────────────────────────────── */}
+      <section className="bg-neutral-950 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <Reveal className="mb-14">
+            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.process.label}</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.process.title}</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {t.process.steps.map((step, i) => (
+              <Reveal key={step.num} delay={i * 120}>
+                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-8 flex flex-col h-full">
+                  <div className="text-[4rem] font-black tabular-nums text-orange-500/50 leading-none mb-4">{step.num}</div>
+                  <div className="w-10 h-0.5 bg-orange-500 mb-6" />
+                  <h3 className="font-bold text-white text-lg mb-3 leading-snug">{step.title}</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{step.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={300} className="mt-12 text-center">
+            <a
+              href={wa(t.process.cta_msg)}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event="process-cta"
+              className="group inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold px-8 py-4 rounded-full text-sm transition-all duration-200 shadow-lg shadow-orange-500/25"
+            >
+              {t.process.cta}
+              <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
+            </a>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── CLIENTS ──────────────────────────────────────────── */}
+      <section id="clientes" className="bg-neutral-950 py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+
+          {/* Header */}
+          <Reveal className="mb-14">
+            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.clients.label}</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.clients.title}</h2>
+            <p className="text-neutral-400 mt-3 text-sm max-w-lg">{t.clients.desc}</p>
+          </Reveal>
+
+          {/* Project cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {t.clients.items.map((client, i) => (
+              <Reveal key={client.name} delay={i * 80}>
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event={`client-${client.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 flex flex-col h-full hover:border-orange-500/30 hover:bg-orange-500/[0.04] transition-all duration-300"
+                >
+                  {/* Domain + number */}
+                  <div className="flex items-start justify-between mb-6">
+                    <span className="text-orange-400/70 text-[11px] font-mono tracking-tight leading-none">
+                      {client.url.replace("https://", "").replace(/\/$/, "")}
+                    </span>
+                    <span className="text-neutral-700 text-[11px] font-black tabular-nums flex-shrink-0 ml-3">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* Client info */}
+                  <h3 className="font-bold text-white text-xl mb-3 leading-snug">{client.name}</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{client.desc}</p>
+
+                  {/* Visit link */}
+                  <div className="mt-7 pt-5 border-t border-white/[0.06] flex items-center justify-between">
+                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-orange-400 group-hover:text-orange-300 group-hover:gap-3 transition-all duration-200">
+                      {t.clients.visit}
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="flex-shrink-0">
+                        <path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                    <div className="w-8 h-8 rounded-full border border-white/[0.08] flex items-center justify-center text-neutral-600 group-hover:bg-orange-500 group-hover:border-orange-500 group-hover:text-white transition-all duration-300 text-sm flex-shrink-0">
+                      ↗
+                    </div>
+                  </div>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <Reveal delay={200} className="mt-10">
+            <div className="rounded-2xl border border-orange-500/20 p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+              style={{ background: "linear-gradient(135deg, rgba(249,115,22,0.08) 0%, rgba(249,115,22,0.03) 60%, transparent 100%)" }}
+            >
+              <div>
+                <p className="text-white font-bold text-lg mb-1.5">{t.clients.bottom_q}</p>
+                <p className="text-neutral-400 text-sm leading-relaxed max-w-md">{t.clients.bottom_desc}</p>
+              </div>
+              <a
+                href={wa(t.cta_final.demo_msg)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="clients-to-demo"
+                className="flex-shrink-0 inline-flex items-center gap-2.5 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-7 py-4 rounded-full transition-all duration-200 whitespace-nowrap hover:-translate-y-0.5 shadow-lg shadow-orange-500/20"
+              >
+                {t.clients.bottom_cta}
+                <span>→</span>
+              </a>
+            </div>
+          </Reveal>
+
         </div>
       </section>
 

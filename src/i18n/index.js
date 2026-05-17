@@ -53,8 +53,8 @@ export const translations = {
       accept: "Aceptar",
     },
     services: {
-      label: "Servicios",
-      title: "Todo lo que tu negocio necesita para crecer",
+      label: "Qué incluye",
+      title: "Diseño web, SEO y publicidad para tu negocio",
       fixed_prices: "Precios fijos, sin letra pequeña.",
       plans_link: "Ver planes y precios",
       learn_more: "Saber más",
@@ -352,8 +352,8 @@ export const translations = {
       accept: "Accept",
     },
     services: {
-      label: "Services",
-      title: "Everything your business needs to grow",
+      label: "What's included",
+      title: "Web design, SEO and advertising for your business",
       fixed_prices: "Fixed prices, no fine print.",
       plans_link: "See plans & pricing",
       learn_more: "Learn more",
@@ -651,8 +651,8 @@ export const translations = {
       accept: "Accepteren",
     },
     services: {
-      label: "Diensten",
-      title: "Alles wat jouw bedrijf nodig heeft om te groeien",
+      label: "Wat is inbegrepen",
+      title: "Webdesign, SEO en advertenties voor jouw bedrijf",
       fixed_prices: "Vaste prijzen, geen kleine lettertjes.",
       plans_link: "Pakketten en prijzen bekijken",
       learn_more: "Meer bekijken",
@@ -950,8 +950,8 @@ export const translations = {
       accept: "Accepter",
     },
     services: {
-      label: "Services",
-      title: "Tout ce dont votre entreprise a besoin pour grandir",
+      label: "Ce qui est inclus",
+      title: "Création web, SEO et publicité pour votre entreprise",
       fixed_prices: "Prix fixes, sans surprise.",
       plans_link: "Voir les offres et tarifs",
       learn_more: "En savoir plus",
