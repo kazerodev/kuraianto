@@ -24,3 +24,19 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Lead outreach system
+credentials.json
+.env
+scripts/outreach-ready.csv
+scripts/dashboard.html
+scripts/.batch-state.json
+
+# Demo generator
+demos/
+
+# Lead import / cold email data
+data/new-leads.csv
+data/new-leads-review.csv
+data/cold-email-ready.csv
+data/email-dashboard.html

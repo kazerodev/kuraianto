@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLang } from "../context/LangContext";
 
 const TABS = ["privacidad", "cookies", "legal", "terminos"];
@@ -46,7 +47,7 @@ const content = {
       title: "Política de cookies",
       sections: [
         {
-          h: "1. ¿Qué son las cookies?",
+          h: "1. Qué son las cookies?",
           p: "Las cookies son pequeños archivos de texto que se almacenan en el dispositivo del usuario cuando visita un sitio web. Permiten que el sitio recuerde información sobre la visita para mejorar la experiencia.",
         },
         {
@@ -277,7 +278,7 @@ const content = {
 function Section({ h, p }) {
   return (
     <div className="mb-8">
-      <h3 className="text-white font-semibold text-base mb-2">{h}</h3>
+      <h2 className="text-white font-semibold text-base mb-2">{h}</h2>
       <p className="text-neutral-400 text-sm leading-relaxed whitespace-pre-line">{p}</p>
     </div>
   );
@@ -306,12 +307,44 @@ function Politicas() {
     setActive(id);
   };
 
-  const pol = content[lang][active];
+  const pol = (content[lang] || content.en)[active];
+
+  const metaTitles = {
+    es: {
+      privacidad: "Política de Privacidad | Kuraianto",
+      cookies: "Política de Cookies | Kuraianto",
+      legal: "Aviso Legal | Kuraianto",
+      terminos: "Términos y Condiciones | Kuraianto",
+    },
+    en: {
+      privacidad: "Privacy Policy | Kuraianto",
+      cookies: "Cookies Policy | Kuraianto",
+      legal: "Legal Notice | Kuraianto",
+      terminos: "Terms & Conditions | Kuraianto",
+    },
+    nl: {
+      privacidad: "Privacybeleid | Kuraianto",
+      cookies: "Cookiebeleid | Kuraianto",
+      legal: "Juridische mededeling | Kuraianto",
+      terminos: "Algemene voorwaarden | Kuraianto",
+    },
+    fr: {
+      privacidad: "Politique de confidentialité | Kuraianto",
+      cookies: "Politique de cookies | Kuraianto",
+      legal: "Mentions légales | Kuraianto",
+      terminos: "Conditions générales | Kuraianto",
+    },
+  };
 
   return (
     <div className="bg-neutral-950 min-h-screen">
+      <Helmet>
+        <title>{metaTitles[lang][active]}</title>
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://kuraianto.com/politicas" />
+      </Helmet>
       <div className="max-w-4xl mx-auto px-6 py-16">
-        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">Legal</p>
+        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">{t.footer.legal_title}</p>
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-10">{pol.title}</h1>
 
         <div className="flex flex-wrap gap-2 mb-12 border-b border-white/5 pb-6">
@@ -337,9 +370,7 @@ function Politicas() {
         </div>
 
         <p className="text-neutral-600 text-xs mt-12 border-t border-white/5 pt-6">
-          {lang === "es"
-            ? "Última actualización: mayo de 2025 · Kuraianto · kuraianto.com"
-            : "Last updated: May 2025 · Kuraianto · kuraianto.com"}
+          {{ es: "Última actualización: mayo de 2026", en: "Last updated: May 2026", nl: "Laatste update: mei 2026", fr: "Dernière mise à jour : mai 2026" }[lang] || "Last updated: May 2026"} · Kuraianto · kuraianto.com
         </p>
       </div>
     </div>

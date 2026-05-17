@@ -56,6 +56,7 @@ function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-4">{f.contact_title}</h4>
             <p className="text-sm mb-1">kuraianto.com</p>
+            <a href="mailto:info@kuraianto.com" className="text-sm block mb-1 hover:text-white transition-colors">info@kuraianto.com</a>
             <p className="text-sm mb-6">+32 485 25 11 10</p>
             <h4 className="text-white font-semibold text-sm mb-3">{f.legal_title}</h4>
             <ul className="space-y-2">

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -36,6 +37,10 @@ const CRM = () => {
 
   return (
     <div className="p-4">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRM | Kuraianto</title>
+      </Helmet>
       <h1 className="text-2xl font-bold mb-4">CRM - Gestión de Clientes</h1>
       <div className="mb-4 flex gap-2">
         <input
