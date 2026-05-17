@@ -163,21 +163,18 @@ function Inicio() {
       </Helmet>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Ambient glow — top right */}
+      <section className="relative min-h-[100svh] flex items-center overflow-hidden">
         <div className="absolute pointer-events-none" style={{ top: "-10%", right: "-10%", width: "800px", height: "800px", background: "radial-gradient(ellipse, rgba(249,115,22,0.12) 0%, rgba(249,115,22,0.04) 40%, transparent 70%)" }} />
-        {/* Ambient glow — bottom left */}
         <div className="absolute pointer-events-none" style={{ bottom: "-20%", left: "-10%", width: "700px", height: "700px", background: "radial-gradient(ellipse, rgba(249,115,22,0.06) 0%, transparent 65%)" }} />
-        {/* Subtle vignette bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.5), transparent)" }} />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 py-28 lg:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 lg:px-10 py-24 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-16 items-center">
 
             {/* Left: headline */}
             <div className="lg:col-span-7">
               <div style={{ animation: "fadeIn 0.45s ease both" }}>
-                <div className="flex items-center gap-4 mb-10">
+                <div className="flex items-center gap-4 mb-8">
                   <div className="w-8 h-px bg-orange-500" />
                   <span className="inline-flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
@@ -187,7 +184,7 @@ function Inicio() {
               </div>
 
               <div style={{ animation: "fadeInUp 0.6s ease 0.1s both" }}>
-                <h1 className="font-black text-white leading-[0.95] tracking-tight mb-7 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+                <h1 className="font-black text-white leading-[0.92] tracking-tight mb-6 text-[2.6rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
                   {t.hero.h1a}<br />
                   {t.hero.h1b}<br />
                   <span className="text-orange-500">{t.hero.h1c}</span>
@@ -195,30 +192,30 @@ function Inicio() {
               </div>
 
               <div style={{ animation: "fadeInUp 0.6s ease 0.2s both" }}>
-                <p className="text-neutral-400 text-lg leading-relaxed mb-10 max-w-xl">{t.hero.desc}</p>
+                <p className="text-neutral-400 text-base sm:text-lg leading-relaxed mb-8 max-w-xl">{t.hero.desc}</p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3.5 mb-12" style={{ animation: "fadeInUp 0.6s ease 0.3s both" }}>
+              <div className="flex flex-col sm:flex-row gap-3 mb-10" style={{ animation: "fadeInUp 0.6s ease 0.3s both" }}>
                 <a
-                  href={wa(t.hero.demo_msg)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-event="hero-demo"
-                  className="group inline-flex items-center justify-center gap-2 bg-orange-500 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:bg-orange-400 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25"
+                  href="#planes"
+                  data-event="hero-cta-plans"
+                  className="group inline-flex items-center justify-center gap-2 bg-orange-500 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:bg-orange-400 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto"
                 >
                   {t.hero.cta_demo}
                 </a>
                 <a
-                  href="#planes"
-                  data-event="hero-plans"
-                  className="group inline-flex items-center justify-center gap-2 border border-white/15 text-white font-semibold px-8 py-4 rounded-full text-sm transition-all hover:bg-white/5 hover:border-white/30"
+                  href={wa(t.hero.demo_msg)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event="hero-wa"
+                  className="group inline-flex items-center justify-center gap-2 border border-white/15 text-white font-semibold px-8 py-4 rounded-full text-sm transition-all hover:bg-white/5 hover:border-white/30 w-full sm:w-auto"
                 >
                   {t.hero.cta_plans}
                   <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
                 </a>
               </div>
 
-              <div className="flex flex-wrap gap-x-7 gap-y-2.5 pt-8 border-t border-white/5" style={{ animation: "fadeInUp 0.6s ease 0.4s both" }}>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-7 border-t border-white/5" style={{ animation: "fadeInUp 0.6s ease 0.4s both" }}>
                 {t.hero.trust.map((txt) => (
                   <span key={txt} className="text-neutral-500 text-xs flex items-center gap-2">
                     <span className="w-1 h-1 rounded-full bg-orange-500/60 flex-shrink-0" />
@@ -228,16 +225,12 @@ function Inicio() {
               </div>
             </div>
 
-            {/* Right: services panel — desktop only, fully static */}
+            {/* Right: plans panel — desktop only */}
             <div className="hidden lg:block lg:col-span-5">
               <div className="rounded-2xl border border-white/[0.07] overflow-hidden" style={{ background: "#0d0d0d" }}>
-
-                {/* Orange-tinted header strip */}
                 <div className="px-6 py-4" style={{ background: "rgba(249,115,22,0.07)", borderBottom: "1px solid rgba(249,115,22,0.12)" }}>
                   <span className="text-orange-400 text-[10px] font-bold uppercase tracking-[0.22em]">{t.hero.card_label}</span>
                 </div>
-
-                {/* 2×2 service grid */}
                 <div className="grid grid-cols-2" style={{ gap: "1px", background: "rgba(255,255,255,0.05)" }}>
                   {t.hero.card_items.map((item, i) => {
                     const [price, tag] = item.detail.split(" · ");
@@ -251,16 +244,12 @@ function Inicio() {
                     );
                   })}
                 </div>
-
-                {/* Footer CTA */}
                 <div className="px-6 py-6" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                   <p className="text-neutral-500 text-xs mb-4">{t.hero.card_sub}</p>
                   <a
-                    href={wa(t.hero.demo_msg)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-event="hero-demo-sidebar"
-                    className="flex items-center justify-center gap-2 w-full bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-[13px] py-4 rounded-xl transition-colors duration-200"
+                    href="#planes"
+                    data-event="hero-card-cta"
+                    className="flex items-center justify-center gap-2 w-full bg-orange-500 hover:bg-orange-400 text-white font-bold text-[13px] py-4 rounded-xl transition-colors duration-200"
                     style={{ boxShadow: "0 8px 24px rgba(249,115,22,0.25)" }}
                   >
                     {t.hero.card_cta}
@@ -271,12 +260,11 @@ function Inicio() {
                     <span className="text-neutral-300 text-[11px] font-semibold">{t.hero.phone}</span>
                   </div>
                 </div>
-
               </div>
             </div>
 
-            {/* Mobile service grid — shown below CTAs on small screens */}
-            <div className="lg:hidden col-span-full mt-2 grid grid-cols-2 gap-3">
+            {/* Mobile plans grid */}
+            <div className="lg:hidden col-span-full grid grid-cols-2 gap-3">
               {t.hero.card_items.map((item, i) => {
                 const [price] = item.detail.split(" · ");
                 return (
@@ -298,7 +286,7 @@ function Inicio() {
 
       {/* ── ANTES / DESPUÉS ──────────────────────────────────── */}
       <section className="bg-neutral-950 py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <Reveal className="mb-10 text-center">
             <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">El problema</span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 leading-tight">
@@ -306,14 +294,13 @@ function Inicio() {
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* Antes */}
             <Reveal>
-              <div className="rounded-2xl border border-red-500/15 bg-red-500/[0.03] p-7 h-full">
-                <div className="flex items-center gap-2 mb-6">
+              <div className="rounded-2xl border border-red-500/15 bg-red-500/[0.03] p-6 sm:p-7 h-full">
+                <div className="flex items-center gap-2 mb-5">
                   <span className="w-2 h-2 rounded-full bg-red-500/60 flex-shrink-0" />
                   <span className="text-red-400/80 text-xs font-bold uppercase tracking-widest">Web que pierde clientes</span>
                 </div>
-                <ul className="space-y-3.5">
+                <ul className="space-y-3">
                   {[
                     "Tarda más de 3 segundos en cargar",
                     "Se ve mal o incompleta en el móvil",
@@ -330,14 +317,13 @@ function Inicio() {
                 </ul>
               </div>
             </Reveal>
-            {/* Después */}
             <Reveal delay={100}>
-              <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.04] p-7 h-full flex flex-col">
-                <div className="flex items-center gap-2 mb-6">
+              <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.04] p-6 sm:p-7 h-full flex flex-col">
+                <div className="flex items-center gap-2 mb-5">
                   <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse flex-shrink-0" />
                   <span className="text-orange-400 text-xs font-bold uppercase tracking-widest">Tu web Kuraianto · desde 349€</span>
                 </div>
-                <ul className="space-y-3.5 flex-1">
+                <ul className="space-y-3 flex-1">
                   {[
                     "Carga en menos de 2 segundos",
                     "Perfecta en móvil y escritorio",
@@ -353,11 +339,9 @@ function Inicio() {
                   ))}
                 </ul>
                 <a
-                  href={wa("Hola, me gustaría pedir la demo gratis para ver cómo quedaría mi web.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#planes"
                   data-event="antes-despues-cta"
-                  className="mt-7 inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25"
+                  className="mt-6 inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-4 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full"
                 >
                   Quiero esto para mi negocio →
                 </a>
@@ -367,18 +351,16 @@ function Inicio() {
         </div>
       </section>
 
-      {/* ── PRICING ──────────────────────────────────────────── */}
+      {/* ── PRICING ─────────────────────────────────────────── */}
       <section id="planes" className="bg-neutral-950 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
 
-          {/* Header */}
           <Reveal className="mb-4">
             <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">{t.pricing.label}</span>
             <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.pricing.title}</h2>
             <p className="text-neutral-400 mt-4 text-sm leading-relaxed max-w-md">{t.pricing.desc}</p>
           </Reveal>
 
-          {/* Trust bar */}
           <Reveal className="mb-12">
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
               {t.pricing.trust_bar.split(" · ").map((item, i) => (
@@ -409,8 +391,7 @@ function Inicio() {
                     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/70 to-transparent" />
                   )}
 
-                  {/* Card header */}
-                  <div className="px-7 pt-7 pb-5">
+                  <div className="px-6 sm:px-7 pt-7 pb-5">
                     {plan.popular ? (
                       <div className="inline-flex items-center gap-1.5 bg-orange-500/15 border border-orange-500/20 rounded-full px-3 py-1 mb-4">
                         <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
@@ -427,8 +408,7 @@ function Inicio() {
                     <p className="text-neutral-600 text-xs">{t.pricing.once}</p>
                   </div>
 
-                  {/* Features */}
-                  <div className="px-7 pb-5 flex-1 border-t border-white/[0.06] pt-5">
+                  <div className="px-6 sm:px-7 pb-5 flex-1 border-t border-white/[0.06] pt-5">
                     <ul className="space-y-2.5">
                       {plan.features.map((feat) => (
                         <li key={feat} className="flex items-start gap-2.5 text-sm text-neutral-400">
@@ -442,15 +422,14 @@ function Inicio() {
                     </ul>
                   </div>
 
-                  {/* CTAs */}
-                  <div className="px-7 pb-7 pt-4 flex flex-col gap-3">
+                  <div className="px-6 sm:px-7 pb-7 pt-4 flex flex-col gap-3">
                     {plan.stripe && (
                       <a
                         href={plan.stripe}
                         target="_blank"
                         rel="noopener noreferrer"
                         data-event={`stripe-${plan.id}`}
-                        className={`block text-center font-bold py-3.5 rounded-full text-sm transition-all duration-200 ${plan.popular ? "bg-orange-500 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35 hover:-translate-y-0.5" : "bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/20 hover:border-orange-500/40 hover:-translate-y-0.5"}`}
+                        className={`block text-center font-bold py-4 rounded-full text-sm transition-all duration-200 ${plan.popular ? "bg-orange-500 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35 hover:-translate-y-0.5" : "bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/20 hover:border-orange-500/40 hover:-translate-y-0.5"}`}
                       >
                         {t.pricing.cta_pay} — {plan.price}
                       </a>
@@ -460,18 +439,9 @@ function Inicio() {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-event={`demo-${plan.id}`}
-                      className={`block text-center font-bold py-3.5 rounded-full text-sm transition-all duration-200 ${plan.stripe ? "border border-white/15 text-neutral-300 hover:bg-white/[0.04] hover:border-white/25 hover:-translate-y-0.5" : plan.popular ? "bg-orange-500 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35 hover:-translate-y-0.5" : "bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/20 hover:border-orange-500/40 hover:-translate-y-0.5"}`}
+                      className={`block text-center font-bold py-4 rounded-full text-sm transition-all duration-200 ${plan.stripe ? "border border-white/15 text-neutral-300 hover:bg-white/[0.04] hover:border-white/25 hover:-translate-y-0.5" : plan.popular ? "bg-orange-500 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35 hover:-translate-y-0.5" : "bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/20 hover:border-orange-500/40 hover:-translate-y-0.5"}`}
                     >
                       {t.pricing.cta_demo}
-                    </a>
-                    <a
-                      href={wa(plan.wa_msg)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-event={`wa-${plan.id}`}
-                      className="block text-center text-neutral-600 hover:text-neutral-400 text-[11px] py-1 transition-colors leading-snug"
-                    >
-                      {t.pricing.cta_wa_text}
                     </a>
                   </div>
                 </div>
@@ -481,24 +451,19 @@ function Inicio() {
 
           <Reveal delay={200}>
             <div className="mt-10 pt-10 border-t border-white/[0.06]">
-
-              {/* Section header */}
               <div className="mb-10">
                 <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase mb-3 block">{t.pricing.other_title}</span>
                 <h3 className="text-white text-2xl md:text-3xl font-bold leading-snug mb-3">{t.pricing.other_section_title}</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed max-w-2xl">{t.pricing.other_section_subtitle}</p>
               </div>
 
-              {/* 3-column category grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
                 {t.pricing.other_categories.map((cat, ci) => (
                   <div key={ci} className="rounded-2xl border border-white/[0.07] bg-white/[0.02] overflow-hidden flex flex-col">
-                    {/* Category header */}
                     <div className="px-6 py-4 border-b border-white/[0.06] flex items-center gap-3 bg-white/[0.02]">
                       <div className="w-1 h-4 bg-orange-500 rounded-full flex-shrink-0" />
                       <span className="text-white text-sm font-bold tracking-wide">{cat.label}</span>
                     </div>
-                    {/* Service rows */}
                     <div className="flex flex-col divide-y divide-white/[0.04] flex-1">
                       {cat.items.map((s) => (
                         <div key={s.name} className="px-6 py-5 group hover:bg-orange-500/[0.04] transition-colors duration-200 cursor-default">
@@ -507,7 +472,6 @@ function Inicio() {
                             <span className="text-orange-400 text-xs font-bold whitespace-nowrap flex-shrink-0 mt-0.5 tabular-nums">{s.price}</span>
                           </div>
                           <p className="text-neutral-500 text-xs leading-relaxed">{s.desc}</p>
-                          <div className="mt-3 w-4 h-px bg-orange-500/0 group-hover:bg-orange-500/50 transition-all duration-300" />
                         </div>
                       ))}
                     </div>
@@ -515,7 +479,6 @@ function Inicio() {
                 ))}
               </div>
 
-              {/* Bottom CTA block */}
               <div className="rounded-2xl bg-gradient-to-br from-orange-500/[0.08] via-orange-500/[0.04] to-transparent border border-orange-500/20 p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                 <div>
                   <p className="text-white font-bold text-lg mb-1.5">{t.pricing.other_cta_question}</p>
@@ -526,24 +489,120 @@ function Inicio() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-event="other-services-cta"
-                  className="flex-shrink-0 inline-flex items-center gap-2.5 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-7 py-4 rounded-full transition-all duration-200 whitespace-nowrap hover:-translate-y-0.5 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/35"
+                  className="flex-shrink-0 inline-flex items-center gap-2.5 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-7 py-4 rounded-full transition-all duration-200 whitespace-nowrap hover:-translate-y-0.5 shadow-lg shadow-orange-500/20 w-full sm:w-auto justify-center"
                 >
                   {t.pricing.other_cta_btn}
                   <span className="text-orange-200">→</span>
                 </a>
               </div>
-
             </div>
           </Reveal>
         </div>
       </section>
 
+      {/* ── WHATSAPP CTA BAR ─────────────────────────────────── */}
+      <section className="relative bg-orange-500 py-14 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at top right, rgba(0,0,0,0.18) 0%, transparent 60%)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at bottom left, rgba(234,88,12,0.5) 0%, transparent 55%)" }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-10">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+              <span className="inline-flex items-center gap-2 bg-black/15 rounded-full px-3 py-1 mb-4 text-xs font-bold text-black/70 uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
+                {t.demo_bar.badge}
+              </span>
+              <h3 className="text-3xl md:text-4xl font-black text-black leading-tight max-w-xl">{t.demo_bar.title}</h3>
+              <p className="text-black/60 text-sm mt-2 max-w-lg">{t.demo_bar.desc}</p>
+              <p className="text-black/40 text-xs mt-3 font-medium">{t.demo_bar.subtext}</p>
+            </div>
+            <a
+              href={wa(t.demo_bar.msg)}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event="demobar-cta"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-black text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-neutral-900 transition-all hover:-translate-y-0.5 hover:shadow-2xl whitespace-nowrap w-full md:w-auto justify-center"
+            >
+              {t.demo_bar.cta} →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CLIENTS ──────────────────────────────────────────── */}
+      <section id="clientes" className="bg-neutral-950 py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+
+          <Reveal className="mb-14">
+            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.clients.label}</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.clients.title}</h2>
+            <p className="text-neutral-400 mt-3 text-sm max-w-lg">{t.clients.desc}</p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {t.clients.items.map((client, i) => (
+              <Reveal key={client.name} delay={i * 80}>
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event={`client-${client.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 flex flex-col h-full hover:border-orange-500/30 hover:bg-orange-500/[0.04] transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between mb-6">
+                    <span className="text-orange-400/70 text-[11px] font-mono tracking-tight leading-none">
+                      {client.url.replace("https://", "").replace(/\/$/, "")}
+                    </span>
+                    <span className="text-neutral-700 text-[11px] font-black tabular-nums flex-shrink-0 ml-3">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-white text-xl mb-3 leading-snug">{client.name}</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{client.desc}</p>
+                  <div className="mt-7 pt-5 border-t border-white/[0.06] flex items-center justify-between">
+                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-orange-400 group-hover:text-orange-300 group-hover:gap-3 transition-all duration-200">
+                      {t.clients.visit}
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="flex-shrink-0">
+                        <path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                    <div className="w-8 h-8 rounded-full border border-white/[0.08] flex items-center justify-center text-neutral-600 group-hover:bg-orange-500 group-hover:border-orange-500 group-hover:text-white transition-all duration-300 text-sm flex-shrink-0">
+                      ↗
+                    </div>
+                  </div>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={200} className="mt-10">
+            <div className="rounded-2xl border border-orange-500/20 p-7 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+              style={{ background: "linear-gradient(135deg, rgba(249,115,22,0.08) 0%, rgba(249,115,22,0.03) 60%, transparent 100%)" }}
+            >
+              <div>
+                <p className="text-white font-bold text-lg mb-1.5">{t.clients.bottom_q}</p>
+                <p className="text-neutral-400 text-sm leading-relaxed max-w-md">{t.clients.bottom_desc}</p>
+              </div>
+              <a
+                href={wa(t.cta_final.demo_msg)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="clients-to-demo"
+                className="flex-shrink-0 inline-flex items-center gap-2.5 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-7 py-4 rounded-full transition-all duration-200 whitespace-nowrap hover:-translate-y-0.5 shadow-lg shadow-orange-500/20 w-full sm:w-auto justify-center"
+              >
+                {t.clients.bottom_cta}
+                <span>→</span>
+              </a>
+            </div>
+          </Reveal>
+
+        </div>
+      </section>
+
       {/* ── WHY US ───────────────────────────────────────────── */}
       <section className="bg-neutral-900 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20 items-start">
 
-            {/* Left: sticky header + CTA */}
             <Reveal className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
                 <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">{t.why.label}</span>
@@ -553,8 +612,8 @@ function Inicio() {
                   href={wa(t.why.cta_msg)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-event="why-demo-cta"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 shadow-md shadow-orange-500/20"
+                  data-event="why-cta"
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors duration-200 shadow-md shadow-orange-500/20 w-full sm:w-auto justify-center"
                 >
                   {t.why.cta}
                   <span>→</span>
@@ -562,7 +621,6 @@ function Inicio() {
               </div>
             </Reveal>
 
-            {/* Right: 2×2 feature cards */}
             <Reveal className="lg:col-span-8" delay={100}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {t.why.items.map((item, i) => (
@@ -589,11 +647,44 @@ function Inicio() {
         </div>
       </section>
 
-      {/* ── SERVICES ─────────────────────────────────────────── */}
-      <section id="servicios" className="bg-neutral-950 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      {/* ── PROCESS ──────────────────────────────────────────── */}
+      <section className="bg-neutral-950 py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+          <Reveal className="mb-14">
+            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.process.label}</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.process.title}</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {t.process.steps.map((step, i) => (
+              <Reveal key={step.num} delay={i * 120}>
+                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-8 flex flex-col h-full">
+                  <div className="text-[4rem] font-black tabular-nums text-orange-500/50 leading-none mb-4">{step.num}</div>
+                  <div className="w-10 h-0.5 bg-orange-500 mb-6" />
+                  <h3 className="font-bold text-white text-lg mb-3 leading-snug">{step.title}</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{step.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={300} className="mt-12 text-center">
+            <a
+              href={wa(t.process.cta_msg)}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event="process-cta"
+              className="group inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-400 text-white font-bold px-8 py-4 rounded-full text-sm transition-all duration-200 shadow-lg shadow-orange-500/25"
+            >
+              {t.process.cta}
+              <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
+            </a>
+          </Reveal>
+        </div>
+      </section>
 
-          {/* Section header */}
+      {/* ── SERVICES ─────────────────────────────────────────── */}
+      <section id="servicios" className="bg-neutral-900 py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
+
           <Reveal className="mb-12">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
               <div>
@@ -605,7 +696,7 @@ function Inicio() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-event="services-cta"
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 whitespace-nowrap flex-shrink-0 shadow-md shadow-orange-500/20"
+                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 whitespace-nowrap flex-shrink-0 shadow-md shadow-orange-500/20"
               >
                 {t.services.cta}
                 <span>→</span>
@@ -613,7 +704,6 @@ function Inicio() {
             </div>
           </Reveal>
 
-          {/* Service cards — 3 × 2 grid */}
           {(() => {
             const SERVICE_LINKS = ["/diseno-web", "/seo-local", "/google-ads"];
             return (
@@ -621,23 +711,19 @@ function Inicio() {
                 {t.services.items.map((s, i) => (
                   <Reveal key={s.title} delay={i * 60}>
                     <div className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 hover:border-orange-500/30 hover:bg-orange-500/[0.04] transition-all duration-300 cursor-default flex flex-col h-full">
-                      {/* Number badge + arrow */}
                       <div className="flex items-start justify-between mb-6">
                         <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-500 text-[12px] font-black tabular-nums flex-shrink-0">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <span className="text-neutral-700 text-lg group-hover:text-orange-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-250 select-none">→</span>
                       </div>
-                      {/* Content */}
                       <h3 className="text-white font-bold text-[17px] mb-3 leading-snug">{s.title}</h3>
                       <p className="text-neutral-400 text-sm leading-relaxed flex-1">{s.desc}</p>
-                      {/* Learn more link — only for first 3 cards */}
                       {SERVICE_LINKS[i] && (
                         <Link to={SERVICE_LINKS[i]} className="mt-5 inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 text-xs font-semibold transition-colors cursor-pointer">
                           {t.services.learn_more} →
                         </Link>
                       )}
-                      {/* Slide-in accent line on hover */}
                       <div className="mt-4 h-px bg-white/[0.04] overflow-hidden rounded-full">
                         <div className="h-full bg-orange-500/50 w-0 group-hover:w-full transition-all duration-500 ease-out" />
                       </div>
@@ -648,7 +734,6 @@ function Inicio() {
             );
           })()}
 
-          {/* Trust + plans CTA bar */}
           <Reveal delay={300} className="mt-8">
             <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] px-7 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
               <div className="flex items-center gap-3">
@@ -673,152 +758,11 @@ function Inicio() {
         </div>
       </section>
 
-      {/* ── DEMO CTA ─────────────────────────────────────────── */}
-      <section className="relative bg-orange-500 py-16 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at top right, rgba(0,0,0,0.18) 0%, transparent 60%)" }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at bottom left, rgba(234,88,12,0.5) 0%, transparent 55%)" }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div>
-              <span className="inline-flex items-center gap-2 bg-black/15 rounded-full px-3 py-1 mb-4 text-xs font-bold text-black/70 uppercase tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-black/40" />
-                {t.demo_bar.badge}
-              </span>
-              <h3 className="text-3xl md:text-4xl font-black text-black leading-tight max-w-xl">{t.demo_bar.title}</h3>
-              <p className="text-black/60 text-sm mt-2 max-w-lg">{t.demo_bar.desc}</p>
-              <p className="text-black/40 text-xs mt-3 font-medium">{t.demo_bar.subtext}</p>
-            </div>
-            <a
-              href={wa(t.demo_bar.msg)}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-event="demobar-cta"
-              className="flex-shrink-0 inline-flex items-center gap-2 bg-black text-white font-bold text-sm px-8 py-4 rounded-full hover:bg-neutral-900 transition-all hover:-translate-y-0.5 hover:shadow-2xl whitespace-nowrap"
-            >
-              {t.demo_bar.cta} →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PROCESS ──────────────────────────────────────────── */}
-      <section className="bg-neutral-950 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <Reveal className="mb-14">
-            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.process.label}</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.process.title}</h2>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.process.steps.map((step, i) => (
-              <Reveal key={step.num} delay={i * 120}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-8 flex flex-col h-full">
-                  <div className="text-[4rem] font-black tabular-nums text-orange-500/50 leading-none mb-4">{step.num}</div>
-                  <div className="w-10 h-0.5 bg-orange-500 mb-6" />
-                  <h3 className="font-bold text-white text-lg mb-3 leading-snug">{step.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{step.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={300} className="mt-12 text-center">
-            <a
-              href={wa(t.process.cta_msg)}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-event="process-cta"
-              className="group inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold px-8 py-4 rounded-full text-sm transition-all duration-200 shadow-lg shadow-orange-500/25"
-            >
-              {t.process.cta}
-              <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
-            </a>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── CLIENTS ──────────────────────────────────────────── */}
-      <section id="clientes" className="bg-neutral-950 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-
-          {/* Header */}
-          <Reveal className="mb-14">
-            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.clients.label}</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 leading-tight">{t.clients.title}</h2>
-            <p className="text-neutral-400 mt-3 text-sm max-w-lg">{t.clients.desc}</p>
-          </Reveal>
-
-          {/* Project cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {t.clients.items.map((client, i) => (
-              <Reveal key={client.name} delay={i * 80}>
-                <a
-                  href={client.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-event={`client-${client.name.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="group rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 flex flex-col h-full hover:border-orange-500/30 hover:bg-orange-500/[0.04] transition-all duration-300"
-                >
-                  {/* Domain + number */}
-                  <div className="flex items-start justify-between mb-6">
-                    <span className="text-orange-400/70 text-[11px] font-mono tracking-tight leading-none">
-                      {client.url.replace("https://", "").replace(/\/$/, "")}
-                    </span>
-                    <span className="text-neutral-700 text-[11px] font-black tabular-nums flex-shrink-0 ml-3">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-
-                  {/* Client info */}
-                  <h3 className="font-bold text-white text-xl mb-3 leading-snug">{client.name}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{client.desc}</p>
-
-                  {/* Visit link */}
-                  <div className="mt-7 pt-5 border-t border-white/[0.06] flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-orange-400 group-hover:text-orange-300 group-hover:gap-3 transition-all duration-200">
-                      {t.clients.visit}
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="flex-shrink-0">
-                        <path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                    <div className="w-8 h-8 rounded-full border border-white/[0.08] flex items-center justify-center text-neutral-600 group-hover:bg-orange-500 group-hover:border-orange-500 group-hover:text-white transition-all duration-300 text-sm flex-shrink-0">
-                      ↗
-                    </div>
-                  </div>
-                </a>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Bottom CTA */}
-          <Reveal delay={200} className="mt-10">
-            <div className="rounded-2xl border border-orange-500/20 p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
-              style={{ background: "linear-gradient(135deg, rgba(249,115,22,0.08) 0%, rgba(249,115,22,0.03) 60%, transparent 100%)" }}
-            >
-              <div>
-                <p className="text-white font-bold text-lg mb-1.5">{t.clients.bottom_q}</p>
-                <p className="text-neutral-400 text-sm leading-relaxed max-w-md">{t.clients.bottom_desc}</p>
-              </div>
-              <a
-                href={wa(t.cta_final.demo_msg)}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-event="clients-to-demo"
-                className="flex-shrink-0 inline-flex items-center gap-2.5 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-7 py-4 rounded-full transition-all duration-200 whitespace-nowrap hover:-translate-y-0.5 shadow-lg shadow-orange-500/20"
-              >
-                {t.clients.bottom_cta}
-                <span>→</span>
-              </a>
-            </div>
-          </Reveal>
-
-        </div>
-      </section>
-
       {/* ── FAQ ──────────────────────────────────────────────── */}
-      <section id="faq" className="bg-neutral-900 py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section id="faq" className="bg-neutral-950 py-24">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20 items-start">
 
-            {/* Left: sticky intro card */}
             <Reveal className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
                 <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-8">
@@ -830,7 +774,7 @@ function Inicio() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-event="faq-ask-cta"
-                    className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors duration-200 shadow-md shadow-orange-500/20"
+                    className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-colors duration-200 shadow-md shadow-orange-500/20 w-full justify-center"
                   >
                     {t.faq.cta}
                     <span>→</span>
@@ -846,9 +790,8 @@ function Inicio() {
               </div>
             </Reveal>
 
-            {/* Right: accordion */}
             <Reveal className="lg:col-span-8" delay={100}>
-              <div className="rounded-2xl border border-white/[0.06] bg-neutral-950 px-7 py-2">
+              <div className="rounded-2xl border border-white/[0.06] bg-neutral-900 px-7 py-2">
                 {t.faq.items.map((faq) => (
                   <FAQItem key={faq.q} question={faq.q} answer={faq.a} />
                 ))}
@@ -864,17 +807,15 @@ function Inicio() {
         <div className="absolute pointer-events-none bottom-0 right-0 w-[500px] h-[500px]" style={{ background: "radial-gradient(ellipse at right bottom, rgba(249,115,22,0.05) 0%, transparent 65%)" }} />
         <div className="absolute pointer-events-none top-0 left-0 w-[400px] h-[400px]" style={{ background: "radial-gradient(ellipse at left top, rgba(249,115,22,0.03) 0%, transparent 65%)" }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20 items-start">
 
-            {/* Left: copy + trust + direct links */}
             <Reveal className="lg:col-span-5">
               <div>
                 <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">{t.contact.label}</span>
                 <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-4 leading-tight">{t.contact.title}</h2>
                 <p className="text-neutral-400 leading-relaxed mb-10 text-sm">{t.contact.desc}</p>
 
-                {/* Trust points */}
                 <div className="space-y-3.5 mb-10">
                   {t.contact.points.map((item) => (
                     <div key={item.t} className="flex items-center gap-3">
@@ -888,7 +829,6 @@ function Inicio() {
                   ))}
                 </div>
 
-                {/* Direct links */}
                 <div className="pt-8 border-t border-white/[0.06] space-y-3">
                   <p className="text-neutral-600 text-[11px] font-semibold tracking-widest uppercase mb-4">{t.contact.direct}</p>
                   <a
@@ -921,22 +861,16 @@ function Inicio() {
               </div>
             </Reveal>
 
-            {/* Right: form card */}
             <Reveal className="lg:col-span-7" delay={150}>
               <div
                 className="relative rounded-2xl overflow-hidden"
                 style={{ background: "#0d0d0d", border: "1px solid rgba(255,255,255,0.07)" }}
               >
-                {/* Orange left accent */}
                 <div className="absolute left-0 top-12 bottom-12 w-px bg-gradient-to-b from-transparent via-orange-500/40 to-transparent" />
-                {/* Subtle top glow */}
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
-
-                <div className="p-8 lg:p-10">
+                <div className="p-7 sm:p-10">
                   <p className="text-white font-semibold text-sm mb-6 pl-4">{t.contact.form.header}</p>
-                  <div className="pl-0">
-                    <ContactForm />
-                  </div>
+                  <ContactForm />
                 </div>
               </div>
             </Reveal>
@@ -952,7 +886,7 @@ function Inicio() {
         rel="noopener noreferrer"
         data-event="wa-float"
         aria-label="WhatsApp"
-        className="fixed bottom-6 right-5 z-50 inline-flex items-center gap-2 bg-green-500 text-white font-bold px-5 py-3 rounded-full shadow-2xl text-sm transition-all hover:bg-green-400 hover:-translate-y-0.5 hover:shadow-green-500/40"
+        className="fixed bottom-5 right-4 z-50 inline-flex items-center gap-2 bg-green-500 text-white font-bold px-4 sm:px-5 py-3 rounded-full shadow-2xl text-sm transition-all hover:bg-green-400 hover:-translate-y-0.5 hover:shadow-green-500/40"
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
