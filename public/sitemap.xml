@@ -3,31 +3,36 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kuraianto.com/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kuraianto.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kuraianto.com/" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://kuraianto.com/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kuraianto.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kuraianto.com/" />
+    <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://kuraianto.com/diseno-web</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kuraianto.com/seo-local</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kuraianto.com/google-ads</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kuraianto.com/politicas</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

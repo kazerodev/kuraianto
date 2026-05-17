@@ -73,14 +73,17 @@ export default function SeoLocal() {
   return (
     <div className="bg-neutral-950 overflow-x-hidden">
       <Helmet>
+        <html lang="es" />
         <title>SEO Local para Negocios | Posicionamiento en Google | Kuraianto</title>
-        <meta name="description" content="Aparece en Google cuando alguien busca tu servicio cerca. Posicionamiento local medible, sin permanencias. Auditoría SEO gratuita." />
+        <meta name="description" content="Aparece en Google cuando alguien busca tu servicio en tu ciudad. Posicionamiento local real y medible mes a mes. Sin permanencias." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://kuraianto.com/seo-local" />
         <meta property="og:title" content="SEO Local para Negocios | Posicionamiento en Google | Kuraianto" />
-        <meta property="og:description" content="Aparece en Google cuando alguien busca tu servicio cerca. Posicionamiento local medible, sin permanencias. Auditoría SEO gratuita." />
+        <meta property="og:description" content="Aparece en Google cuando alguien busca tu servicio en tu ciudad. Posicionamiento local real y medible mes a mes. Sin permanencias." />
         <meta property="og:url" content="https://kuraianto.com/seo-local" />
+        <meta property="og:image" content="https://kuraianto.com/og-image.png" />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="es_ES" />
       </Helmet>
 
       {/* ── HERO ── */}

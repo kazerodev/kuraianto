@@ -73,14 +73,17 @@ export default function GoogleAds() {
   return (
     <div className="bg-neutral-950 overflow-x-hidden">
       <Helmet>
-        <title>Google Ads para Negocios | Publicidad en Google | Kuraianto</title>
-        <meta name="description" content="Campañas de Google Ads gestionadas para negocios locales. Aparece cuando te buscan, solo pagas por clics reales. Presupuesto gratuito, sin permanencias." />
+        <html lang="es" />
+        <title>Google Ads para Negocios Locales | Publicidad en Google | Kuraianto</title>
+        <meta name="description" content="Campañas de Google Ads gestionadas para negocios locales. Aparece cuando te buscan, solo pagas por clics reales. Sin permanencias." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://kuraianto.com/google-ads" />
-        <meta property="og:title" content="Google Ads para Negocios | Publicidad en Google | Kuraianto" />
-        <meta property="og:description" content="Campañas de Google Ads gestionadas para negocios locales. Aparece cuando te buscan, solo pagas por clics reales. Presupuesto gratuito, sin permanencias." />
+        <meta property="og:title" content="Google Ads para Negocios Locales | Publicidad en Google | Kuraianto" />
+        <meta property="og:description" content="Campañas de Google Ads gestionadas para negocios locales. Aparece cuando te buscan, solo pagas por clics reales. Sin permanencias." />
         <meta property="og:url" content="https://kuraianto.com/google-ads" />
+        <meta property="og:image" content="https://kuraianto.com/og-image.png" />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="es_ES" />
       </Helmet>
 
       {/* ── HERO ── */}

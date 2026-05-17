@@ -153,12 +153,20 @@ function Inicio() {
   return (
     <div className="bg-neutral-950 overflow-x-hidden">
       <Helmet>
+        <html lang={lang} />
         <title>{metaTitle}</title>
         <meta name="description" content={metaDesc} />
         <link rel="canonical" href="https://kuraianto.com/" />
+        <link rel="alternate" hreflang="es" href="https://kuraianto.com/" />
+        <link rel="alternate" hreflang="en" href="https://kuraianto.com/" />
+        <link rel="alternate" hreflang="nl" href="https://kuraianto.com/" />
+        <link rel="alternate" hreflang="fr" href="https://kuraianto.com/" />
+        <link rel="alternate" hreflang="x-default" href="https://kuraianto.com/" />
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={metaDesc} />
         <meta property="og:url" content="https://kuraianto.com/" />
+        <meta property="og:image" content="https://kuraianto.com/og-image.png" />
+        <meta property="og:locale" content={lang === "es" ? "es_ES" : lang === "en" ? "en_GB" : lang === "nl" ? "nl_BE" : "fr_BE"} />
       </Helmet>
 
       {/* ── HERO ─────────────────────────────────────────────── */}
