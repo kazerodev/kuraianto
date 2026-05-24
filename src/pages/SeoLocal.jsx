@@ -74,16 +74,65 @@ export default function SeoLocal() {
     <div className="bg-neutral-950 overflow-x-hidden">
       <Helmet>
         <html lang="es" />
-        <title>SEO Local para Negocios | Posicionamiento en Google | Kuraianto</title>
-        <meta name="description" content="Aparece en Google cuando alguien busca tu servicio en tu ciudad. Posicionamiento local real y medible mes a mes. Sin permanencias." />
-        <meta name="robots" content="index, follow" />
+        <title>SEO Local para Negocios en España | Posicionamiento en Google | Kuraianto</title>
+        <meta name="description" content="Posicionamiento en Google para negocios locales. Google Business Profile, palabras clave locales e informes mensuales de posiciones reales. Desde 600€/mes." />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://kuraianto.com/seo-local" />
-        <meta property="og:title" content="SEO Local para Negocios | Posicionamiento en Google | Kuraianto" />
-        <meta property="og:description" content="Aparece en Google cuando alguien busca tu servicio en tu ciudad. Posicionamiento local real y medible mes a mes. Sin permanencias." />
+        <meta property="og:title" content="SEO Local para Negocios en España | Posicionamiento en Google | Kuraianto" />
+        <meta property="og:description" content="Posicionamiento en Google para negocios locales. Google Business Profile, palabras clave locales e informes mensuales. Desde 600€/mes." />
         <meta property="og:url" content="https://kuraianto.com/seo-local" />
         <meta property="og:image" content="https://kuraianto.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="es_ES" />
+        <meta property="og:site_name" content="Kuraianto" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SEO Local para Negocios en España | Posicionamiento en Google | Kuraianto" />
+        <meta name="twitter:description" content="Aparece en Google cuando te buscan en tu ciudad. Google Business Profile, palabras clave locales. Desde 600€/mes." />
+        <meta name="twitter:image" content="https://kuraianto.com/og-image.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://kuraianto.com/" },
+                { "@type": "ListItem", "position": 2, "name": "SEO Local", "item": "https://kuraianto.com/seo-local" }
+              ]
+            },
+            {
+              "@type": "Service",
+              "@id": "https://kuraianto.com/seo-local#service",
+              "name": "SEO Local para Negocios",
+              "url": "https://kuraianto.com/seo-local",
+              "provider": { "@type": "Organization", "name": "Kuraianto", "url": "https://kuraianto.com" },
+              "description": "Posicionamiento orgánico en Google para negocios locales. Auditoría inicial, optimización de Google Business Profile, palabras clave locales y seguimiento mensual con datos reales.",
+              "offers": {
+                "@type": "Offer",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "600",
+                  "priceCurrency": "EUR",
+                  "billingDuration": "P1M"
+                },
+                "description": "Servicio mensual de SEO local desde 600€/mes. Sin permanencias."
+              },
+              "areaServed": [
+                { "@type": "Country", "name": "Spain" },
+                { "@type": "Country", "name": "Belgium" }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": FAQS.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": { "@type": "Answer", "text": item.a }
+              }))
+            }
+          ]
+        })}</script>
       </Helmet>
 
       {/* ── HERO ── */}

@@ -35,25 +35,24 @@ function Reveal({ children, delay = 0, className = "" }) {
 
 function Marquee() {
   const { t } = useLang();
-  const serviceNames = t.services.items.map((s) => s.title);
-  const extras = t.hero.trust;
-  const doubled = [...serviceNames, ...extras, ...serviceNames, ...extras];
+  const items = t.marquee || [];
+  const repeated = [...items, ...items, ...items, ...items];
   return (
-    <div className="overflow-hidden bg-orange-500 py-3.5 select-none" aria-hidden="true">
+    <div className="overflow-hidden bg-orange-500 py-4 select-none" aria-hidden="true">
       <div
         style={{
           display: "inline-flex",
-          animation: "marquee 40s linear infinite",
+          animation: "marquee 70s linear infinite",
           willChange: "transform",
         }}
       >
-        {doubled.map((item, i) => (
+        {repeated.map((item, i) => (
           <span
             key={i}
-            className="inline-flex items-center gap-3 px-5 text-[11px] font-bold text-black/60 uppercase tracking-[0.18em]"
+            className="inline-flex items-center gap-3 px-6 text-[12px] font-black text-black/65 uppercase tracking-[0.13em] whitespace-nowrap"
           >
             {item}
-            <span className="w-1 h-1 rounded-full bg-black/25 flex-shrink-0" />
+            <span className="text-black/25 text-[9px] flex-shrink-0">◆</span>
           </span>
         ))}
       </div>
@@ -80,8 +79,14 @@ function MobileCtaBar() {
     >
       <div className="px-3 pb-4 pt-3 bg-[#080808]/97 backdrop-blur-md border-t border-white/[0.08]">
         <a
-          href="#planes"
-          data-event="mobile-cta-bar"
+          href={t.pricing.plans[0].stripe}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-event="mobile-cta-stripe"
+          onClick={() => {
+            if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
+            if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
+          }}
           className="flex items-center justify-center gap-2 w-full bg-orange-500 font-bold py-4 rounded-xl text-sm text-white"
           style={{ boxShadow: "0 4px 20px rgba(249,115,22,0.40)" }}
         >
@@ -142,6 +147,8 @@ function ContactForm() {
     if (servicio) parts.push(interestLine[lang] || interestLine.en);
     if (contacto) parts.push(contactoLine[lang] || contactoLine.en);
     if (mensaje) parts.push(mensaje);
+    if (window.fbq) window.fbq("track", "Lead", { content_name: servicio || "Contacto", currency: "EUR" });
+    if (window.dataLayer) window.dataLayer.push({ event: "lead", servicio });
     window.open(`${WA_BASE}?text=${encodeURIComponent(parts.join(" "))}`, "_blank");
   };
 
@@ -179,17 +186,26 @@ function Inicio() {
         <html lang={lang} />
         <title>{metaTitle}</title>
         <meta name="description" content={metaDesc} />
-        <link rel="canonical" href="https://kuraianto.com/" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <link rel="canonical" href={`https://kuraianto.com${lang === "es" ? "/" : `/${lang}`}`} />
         <link rel="alternate" hreflang="es" href="https://kuraianto.com/" />
-        <link rel="alternate" hreflang="en" href="https://kuraianto.com/" />
-        <link rel="alternate" hreflang="nl" href="https://kuraianto.com/" />
-        <link rel="alternate" hreflang="fr" href="https://kuraianto.com/" />
+        <link rel="alternate" hreflang="en" href="https://kuraianto.com/en" />
+        <link rel="alternate" hreflang="nl" href="https://kuraianto.com/nl" />
+        <link rel="alternate" hreflang="fr" href="https://kuraianto.com/fr" />
         <link rel="alternate" hreflang="x-default" href="https://kuraianto.com/" />
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={metaDesc} />
         <meta property="og:url" content="https://kuraianto.com/" />
         <meta property="og:image" content="https://kuraianto.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Kuraianto" />
         <meta property="og:locale" content={lang === "es" ? "es_ES" : lang === "en" ? "en_GB" : lang === "nl" ? "nl_BE" : "fr_BE"} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDesc} />
+        <meta name="twitter:image" content="https://kuraianto.com/og-image.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -236,8 +252,14 @@ function Inicio() {
 
               <div className="flex flex-col sm:flex-row gap-3 mb-10" style={{ animation: "fadeInUp 0.6s ease 0.3s both" }}>
                 <a
-                  href="#planes"
-                  data-event="hero-cta-plans"
+                  href={t.pricing.plans[0].stripe}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event="hero-cta-stripe"
+                  onClick={() => {
+                    if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
+                    if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
+                  }}
                   className="group inline-flex items-center justify-center gap-2 bg-orange-500 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:bg-orange-400 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto"
                 >
                   {t.hero.cta_demo}
@@ -320,55 +342,117 @@ function Inicio() {
       <Marquee />
 
       {/* ── ANTES / DESPUÉS ──────────────────────────────────── */}
-      <section className="bg-neutral-950 py-16">
+      <section className="bg-neutral-950 py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
+
+          {/* Header */}
           <Reveal className="mb-10 text-center">
-            <span className="text-orange-500 text-xs font-semibold tracking-widest uppercase">{t.antes_despues.label}</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 leading-tight">
-              {t.antes_despues.title}
+            <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 rounded-full px-4 py-1.5 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
+              <span className="text-red-400 text-xs font-bold tracking-widest uppercase">{t.antes_despues.label}</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-[2.6rem] font-black text-white leading-tight mb-4 max-w-2xl mx-auto">
+              {t.antes_despues.pain_headline}
             </h2>
+            <p className="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+              {t.antes_despues.pain_sub}
+            </p>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+          {/* Stats row */}
+          <Reveal className="mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              {t.antes_despues.stats.map((stat, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 sm:p-6 text-center"
+                >
+                  <div className="text-[2rem] sm:text-[2.4rem] font-black text-orange-400 mb-2 tabular-nums leading-none">{stat.num}</div>
+                  <p className="text-neutral-400 text-xs leading-relaxed">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* Comparison cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Bad side */}
             <Reveal>
-              <div className="rounded-2xl border border-red-500/15 bg-red-500/[0.03] p-6 sm:p-7 h-full">
-                <div className="flex items-center gap-2 mb-5">
-                  <span className="w-2 h-2 rounded-full bg-red-500/60 flex-shrink-0" />
+              <div className="rounded-2xl border border-red-500/15 bg-red-500/[0.03] p-6 sm:p-8 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="#f87171" strokeWidth="1.8" strokeLinecap="round"/>
+                    </svg>
+                  </div>
                   <span className="text-red-400/80 text-xs font-bold uppercase tracking-widest">{t.antes_despues.bad_label}</span>
                 </div>
-                <ul className="space-y-3">
+                <ul className="space-y-3.5">
                   {t.antes_despues.bad_items.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-neutral-500 text-sm">
-                      <span className="text-red-500/50 flex-shrink-0 mt-0.5 font-bold">✕</span>
+                      <span className="text-red-500/40 flex-shrink-0 mt-0.5 font-bold leading-5">✕</span>
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
             </Reveal>
+
+            {/* Good side */}
             <Reveal delay={100}>
-              <div className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.04] p-6 sm:p-7 h-full flex flex-col">
-                <div className="flex items-center gap-2 mb-5">
-                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse flex-shrink-0" />
+              <div
+                className="relative rounded-2xl border border-orange-500/25 p-6 sm:p-8 h-full flex flex-col"
+                style={{
+                  background: "linear-gradient(145deg, rgba(249,115,22,0.08) 0%, rgba(249,115,22,0.03) 50%, #0a0a0a 100%)",
+                  boxShadow: "0 0 50px rgba(249,115,22,0.07)",
+                }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent rounded-t-2xl" />
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-8 h-8 rounded-full bg-orange-500/15 border border-orange-500/25 flex items-center justify-center flex-shrink-0">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M1.5 5l2.5 2.5 4.5-5" stroke="#fb923c" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
                   <span className="text-orange-400 text-xs font-bold uppercase tracking-widest">{t.antes_despues.good_label}</span>
                 </div>
-                <ul className="space-y-3 flex-1">
+                <ul className="space-y-3.5 flex-1 mb-8">
                   {t.antes_despues.good_items.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-neutral-300 text-sm">
-                      <span className="text-orange-500 flex-shrink-0 mt-0.5 font-bold">✓</span>
+                      <span className="text-orange-400 flex-shrink-0 mt-0.5 font-bold leading-5">✓</span>
                       {item}
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#planes"
-                  data-event="antes-despues-cta"
-                  className="mt-6 inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-4 rounded-full transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full"
-                >
-                  {t.antes_despues.cta}
-                </a>
+                <div className="flex flex-col gap-2.5 pt-6 border-t border-orange-500/10">
+                  <a
+                    href={t.pricing.plans[0].stripe}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-event="antes-despues-stripe"
+                    onClick={() => {
+                      if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
+                      if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
+                    }}
+                    className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-4 rounded-full transition-all hover:-translate-y-0.5 w-full"
+                    style={{ boxShadow: "0 4px 20px rgba(249,115,22,0.30)" }}
+                  >
+                    {t.antes_despues.cta_primary}
+                  </a>
+                  <a
+                    href={wa(t.hero.demo_msg)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-event="antes-despues-wa"
+                    className="inline-flex items-center justify-center text-neutral-500 hover:text-neutral-300 text-xs py-2 transition-colors w-full"
+                  >
+                    {t.antes_despues.cta_secondary}
+                  </a>
+                </div>
               </div>
             </Reveal>
           </div>
+
         </div>
       </section>
 
@@ -656,8 +740,14 @@ function Inicio() {
             <p className="text-neutral-400 text-sm leading-relaxed mb-10 max-w-lg mx-auto">{t.cta_final.desc}</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="#planes"
-                data-event="cta-final-plans"
+                href={t.pricing.plans[0].stripe}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="cta-final-stripe"
+                onClick={() => {
+                  if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
+                  if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
+                }}
                 className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto"
               >
                 {t.pricing.cta_pay} →

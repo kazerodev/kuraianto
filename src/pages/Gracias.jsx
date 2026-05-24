@@ -1,62 +1,46 @@
 import { useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-const PLAN_VALUES = { starter: 349, pro: 649, marketing: 1099 };
-const PLAN_NAMES  = { starter: "Web Starter", pro: "Web Pro", marketing: "Web + Marketing" };
-
-const WA_CONFIRM = `https://wa.me/32485251110?text=${encodeURIComponent("Hola, acabo de pagar mi web en Kuraianto y quiero coordinar el inicio del proyecto.")}`;
+const WA_CONFIRM = `https://wa.me/32485251110?text=${encodeURIComponent("Hola, acabo de realizar mi compra en Kuraianto y quiero coordinar el inicio del proyecto.")}`;
 
 export default function Gracias() {
-  const [params] = useSearchParams();
-  const plan  = params.get("plan") || "starter";
-  const value = PLAN_VALUES[plan] || 349;
-  const name  = PLAN_NAMES[plan]  || "Web Starter";
-
   useEffect(() => {
     if (window.fbq) {
-      window.fbq("track", "Purchase", {
-        value,
-        currency: "EUR",
-        content_name: name,
-        content_type: "product",
-        content_ids: [plan],
-      });
+      window.fbq("track", "Purchase", { currency: "EUR" });
     }
     if (window.dataLayer) {
-      window.dataLayer.push({ event: "purchase", value, currency: "EUR", plan });
+      window.dataLayer.push({ event: "purchase" });
     }
   }, []);
 
   const steps = [
-    "Recibirás email de confirmación de Stripe",
+    "Recibirás email de confirmación",
     "Te contactamos en menos de 24 horas",
     "Te enviamos el contrato para firmar",
-    "Empezamos con tu web",
+    "Empezamos con tu proyecto",
   ];
 
   return (
     <div className="bg-neutral-950 min-h-screen flex items-center justify-center px-5 py-20">
       <Helmet>
-        <title>¡Pago completado! | Kuraianto</title>
+        <title>¡Gracias por tu compra! | Kuraianto</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="max-w-lg mx-auto text-center w-full">
-        {/* Icon */}
         <div className="w-20 h-20 rounded-full bg-green-500/15 border border-green-500/25 flex items-center justify-center mx-auto mb-8" style={{ boxShadow: "0 0 40px rgba(34,197,94,0.15)" }}>
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20 6L9 17l-5-5" />
           </svg>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight">¡Pago completado!</h1>
+        <h1 className="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight">¡Muchas gracias!</h1>
         <p className="text-neutral-400 text-base leading-relaxed mb-2">
-          Hemos recibido tu pago del plan <span className="text-orange-400 font-semibold">{name}</span>.
+          Hemos recibido tu compra correctamente.
         </p>
         <p className="text-neutral-500 text-sm mb-10">Nos pondremos en contacto contigo en menos de 24 horas.</p>
 
-        {/* Steps */}
         <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-6 mb-8 text-left">
           <p className="text-neutral-500 text-[11px] font-semibold uppercase tracking-widest mb-4">Qué pasa ahora</p>
           {steps.map((step, i) => (
@@ -69,7 +53,6 @@ export default function Gracias() {
           ))}
         </div>
 
-        {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href={WA_CONFIRM}

@@ -57,7 +57,7 @@ const FEATURES = [
   { title: "Responsive y rápida", desc: "Tu web funciona perfectamente en móvil, tablet y escritorio. La velocidad de carga está optimizada desde el primer día." },
   { title: "WhatsApp y formularios de contacto", desc: "Botones de contacto colocados donde tienen sentido para que los visitantes actúen sin fricción." },
   { title: "SEO técnico incluido", desc: "Configuración básica para que Google pueda encontrarte: estructura, metaetiquetas y velocidad desde el inicio." },
-  { title: "Pago seguro con Stripe", desc: "Contratación en 2 clics. Pagas online con Stripe, recibis confirmación inmediata y empezamos enseguida. Sin letra pequeña." },
+  { title: "Pago seguro con Stripe", desc: "Contratación en 2 clics. Pagas online con Stripe, recibes confirmación inmediata y empezamos enseguida. Sin letra pequeña." },
   { title: "Entrega en plazos claros", desc: "Web Starter en 7 días. Web Pro en 10-14 días. Web + Marketing en 14-21 días. Sin sorpresas de calendario." },
 ];
 
@@ -97,16 +97,60 @@ export default function DisenoWeb() {
     <div className="bg-neutral-950 overflow-x-hidden">
       <Helmet>
         <html lang="es" />
-        <title>Diseño Web Profesional para Negocios desde 349€ | Kuraianto</title>
-        <meta name="description" content="Webs profesionales para negocios locales. Rápidas, modernas y listas en 7 días. Desde 349€. Pago seguro con Stripe. Sin permanencias." />
-        <meta name="robots" content="index, follow" />
+        <title>Diseño Web Profesional para Negocios Locales | Desde 349€ | Kuraianto</title>
+        <meta name="description" content="Webs profesionales para negocios locales. Diseño responsive, WhatsApp, SEO básico y listas en 7 días. Pago seguro con Stripe. Desde 349€." />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://kuraianto.com/diseno-web" />
-        <meta property="og:title" content="Diseño Web Profesional para Negocios desde 349€ | Kuraianto" />
-        <meta property="og:description" content="Webs profesionales para negocios locales. Rápidas, modernas y listas en 7 días. Desde 349€. Pago seguro con Stripe. Sin permanencias." />
+        <meta property="og:title" content="Diseño Web Profesional para Negocios Locales | Desde 349€ | Kuraianto" />
+        <meta property="og:description" content="Webs profesionales para negocios locales. Diseño responsive, WhatsApp, SEO básico y listas en 7 días. Desde 349€." />
         <meta property="og:url" content="https://kuraianto.com/diseno-web" />
         <meta property="og:image" content="https://kuraianto.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="es_ES" />
+        <meta property="og:site_name" content="Kuraianto" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Diseño Web Profesional para Negocios Locales | Desde 349€ | Kuraianto" />
+        <meta name="twitter:description" content="Webs para negocios locales. Responsive, WhatsApp, SEO básico. Listas en 7 días. Desde 349€." />
+        <meta name="twitter:image" content="https://kuraianto.com/og-image.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://kuraianto.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Diseño Web", "item": "https://kuraianto.com/diseno-web" }
+              ]
+            },
+            {
+              "@type": "Service",
+              "@id": "https://kuraianto.com/diseno-web#service",
+              "name": "Diseño Web Profesional para Negocios",
+              "url": "https://kuraianto.com/diseno-web",
+              "provider": { "@type": "Organization", "name": "Kuraianto", "url": "https://kuraianto.com" },
+              "description": "Diseño y desarrollo de webs profesionales para negocios locales. Rápidas, responsive, con WhatsApp, formulario de contacto y SEO básico incluidos.",
+              "offers": [
+                { "@type": "Offer", "name": "Web Starter", "price": "349", "priceCurrency": "EUR", "description": "Hasta 5 páginas, diseño responsive, WhatsApp, formulario y SEO básico. Lista en 7 días." },
+                { "@type": "Offer", "name": "Web Pro", "price": "649", "priceCurrency": "EUR", "description": "Hasta 8 páginas, blog, SEO local básico, Meta Pixel y 1 mes de soporte post-lanzamiento." },
+                { "@type": "Offer", "name": "Web + Marketing", "price": "1099", "priceCurrency": "EUR", "description": "Web completa con landing page para campañas, SEO completo, Meta Pixel configurado y 3 meses de soporte." }
+              ],
+              "areaServed": [
+                { "@type": "Country", "name": "Spain" },
+                { "@type": "Country", "name": "Belgium" }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": FAQS.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": { "@type": "Answer", "text": item.a }
+              }))
+            }
+          ]
+        })}</script>
       </Helmet>
 
       {/* ── HERO ── */}
@@ -126,9 +170,17 @@ export default function DisenoWeb() {
                 No diseñamos webs para que queden bonitas. Las diseñamos para que vendan. Pago seguro con Stripe, listo en 7 días, desde 349€.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="/#planes" data-event="diseno-hero-plans"
+                <a
+                  href="https://buy.stripe.com/9B69AM04B4kQ9aca4Nc7u09"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-event="diseno-hero-stripe"
+                  onClick={() => {
+                    if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
+                    if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
+                  }}
                   className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto">
-                  Ver planes y contratar →
+                  Empezar ahora — desde 349€ →
                 </a>
                 <a href={wa(INFO_MSG)} target="_blank" rel="noopener noreferrer" data-event="diseno-hero-wa"
                   className="inline-flex items-center justify-center border border-white/15 text-neutral-300 hover:text-white hover:border-white/30 font-semibold px-8 py-4 rounded-full text-sm transition-all hover:bg-white/5 w-full sm:w-auto">
@@ -406,9 +458,17 @@ export default function DisenoWeb() {
               Escríbenos por WhatsApp y te respondemos con un presupuesto detallado en menos de 24 horas. Sin compromiso, sin letra pequeña.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href="/#planes" data-event="diseno-bottom-plans"
+              <a
+                href="https://buy.stripe.com/9B69AM04B4kQ9aca4Nc7u09"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="diseno-bottom-stripe"
+                onClick={() => {
+                  if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
+                  if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
+                }}
                 className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-400 text-white font-bold px-10 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto">
-                Ver planes y contratar →
+                Empezar ahora — desde 349€ →
               </a>
               <a href={wa(CTA_MSG)} target="_blank" rel="noopener noreferrer" data-event="diseno-bottom-wa"
                 className="inline-flex items-center justify-center border border-white/15 text-neutral-300 hover:text-white hover:border-white/30 font-semibold px-10 py-4 rounded-full text-sm transition-all hover:bg-white/5 w-full sm:w-auto">

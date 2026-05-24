@@ -74,16 +74,65 @@ export default function GoogleAds() {
     <div className="bg-neutral-950 overflow-x-hidden">
       <Helmet>
         <html lang="es" />
-        <title>Google Ads para Negocios Locales | Publicidad en Google | Kuraianto</title>
-        <meta name="description" content="Campañas de Google Ads gestionadas para negocios locales. Aparece cuando te buscan, solo pagas por clics reales. Sin permanencias." />
-        <meta name="robots" content="index, follow" />
+        <title>Google Ads para Negocios Locales | Gestión de Campañas | Kuraianto</title>
+        <meta name="description" content="Gestión de Google Ads para negocios locales. Configuración desde cero, seguimiento de conversiones y optimización mensual. Aparece cuando te buscan. Desde 700€/mes." />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://kuraianto.com/google-ads" />
-        <meta property="og:title" content="Google Ads para Negocios Locales | Publicidad en Google | Kuraianto" />
-        <meta property="og:description" content="Campañas de Google Ads gestionadas para negocios locales. Aparece cuando te buscan, solo pagas por clics reales. Sin permanencias." />
+        <meta property="og:title" content="Google Ads para Negocios Locales | Gestión de Campañas | Kuraianto" />
+        <meta property="og:description" content="Gestión de Google Ads para negocios locales. Configuración desde cero, seguimiento de conversiones y optimización mensual. Desde 700€/mes." />
         <meta property="og:url" content="https://kuraianto.com/google-ads" />
         <meta property="og:image" content="https://kuraianto.com/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="es_ES" />
+        <meta property="og:site_name" content="Kuraianto" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Google Ads para Negocios Locales | Gestión de Campañas | Kuraianto" />
+        <meta name="twitter:description" content="Campañas de Google Ads para negocios locales. Solo pagas por clics reales. Configuración y optimización mensual. Desde 700€/mes." />
+        <meta name="twitter:image" content="https://kuraianto.com/og-image.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://kuraianto.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Google Ads", "item": "https://kuraianto.com/google-ads" }
+              ]
+            },
+            {
+              "@type": "Service",
+              "@id": "https://kuraianto.com/google-ads#service",
+              "name": "Google Ads para Negocios Locales",
+              "url": "https://kuraianto.com/google-ads",
+              "provider": { "@type": "Organization", "name": "Kuraianto", "url": "https://kuraianto.com" },
+              "description": "Gestión completa de campañas de Google Ads para negocios locales. Configuración desde cero, segmentación geográfica, seguimiento de conversiones y optimización mensual.",
+              "offers": {
+                "@type": "Offer",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "700",
+                  "priceCurrency": "EUR",
+                  "billingDuration": "P1M"
+                },
+                "description": "Gestión mensual de Google Ads desde 700€/mes. Sin permanencias."
+              },
+              "areaServed": [
+                { "@type": "Country", "name": "Spain" },
+                { "@type": "Country", "name": "Belgium" }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": FAQS.map(item => ({
+                "@type": "Question",
+                "name": item.q,
+                "acceptedAnswer": { "@type": "Answer", "text": item.a }
+              }))
+            }
+          ]
+        })}</script>
       </Helmet>
 
       {/* ── HERO ── */}

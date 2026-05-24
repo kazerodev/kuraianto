@@ -33,6 +33,7 @@ export const translations = {
       card_sub: "Hablamos hoy y empezamos esta semana.",
       phone: "+32 485 25 11 10",
     },
+    marquee: ["Web en 7 días", "Desde 349€", "Diseño responsive", "Meta Pixel incluido", "SEO desde el día 1", "WhatsApp integrado", "Pago seguro con Stripe", "Sin letra pequeña", "Google Maps incluido", "Resultados medibles", "Sin permanencias", "Lista esta semana", "Para negocios locales", "3 planes disponibles"],
     demo_bar: {
       badge: "Respuesta rápida",
       title: "¿Dudas antes de contratar?",
@@ -44,7 +45,14 @@ export const translations = {
     antes_despues: {
       label: "El problema",
       title: "¿Reconoces tu web actual?",
-      bad_label: "Web que pierde clientes",
+      pain_headline: "Estás perdiendo clientes. Tu web actual no trabaja para ti.",
+      pain_sub: "La mayoría de webs para negocios locales están pensadas para verse bien, no para vender. Aquí está la diferencia.",
+      stats: [
+        { num: "73%", label: "de la gente juzga tu negocio por tu web antes de contactarte" },
+        { num: "8 seg", label: "es lo que tarda un visitante en irse si no encuentra lo que busca" },
+        { num: "349€", label: "para tener una web que trabaja para ti, lista en 7 días" },
+      ],
+      bad_label: "Tu web actual",
       bad_items: [
         "Tarda más de 3 segundos en cargar",
         "Se ve mal o incompleta en el móvil",
@@ -53,7 +61,7 @@ export const translations = {
         "Parece anticuada o no inspira confianza",
         "No has tocado nada desde hace años",
       ],
-      good_label: "Tu web Kuraianto · desde 349€",
+      good_label: "Tu nueva web · desde 349€",
       good_items: [
         "Carga en menos de 2 segundos",
         "Perfecta en móvil y escritorio",
@@ -63,6 +71,8 @@ export const translations = {
         "Lista en 7 días, sin complicaciones",
       ],
       cta: "Quiero esto para mi negocio →",
+      cta_primary: "Quiero una web que venda — desde 349€",
+      cta_secondary: "Hablar primero por WhatsApp",
     },
     meta: {
       home_title: "Web Profesional desde 349€ para tu Negocio | Kuraianto",
@@ -357,9 +367,10 @@ export const translations = {
       card_sub: "We talk today and start this week.",
       phone: "+32 485 25 11 10",
     },
+    marquee: ["Website in 7 days", "From 349€", "Responsive design", "Meta Pixel included", "SEO from day 1", "WhatsApp integrated", "Secure payment via Stripe", "No fine print", "Google Maps included", "Measurable results", "No contracts", "Ready this week", "For local businesses", "3 plans available"],
     demo_bar: {
       badge: "Quick reply",
-      title: "Questions before buying?",
+      title: "Got questions before buying?",
       desc: "Message us on WhatsApp and we'll reply today. No bots, no waiting.",
       subtext: "We talk today and, if you decide, we start this very week.",
       cta: "Chat on WhatsApp",
@@ -368,7 +379,14 @@ export const translations = {
     antes_despues: {
       label: "The problem",
       title: "Does your current website look like this?",
-      bad_label: "Website losing you clients",
+      pain_headline: "You're losing clients. Your current website isn't working for you.",
+      pain_sub: "Most local business websites are built to look good, not to sell. Here's the difference.",
+      stats: [
+        { num: "73%", label: "of people judge your business by your website before contacting you" },
+        { num: "8 sec", label: "is how long a visitor waits before leaving if they don't find what they need" },
+        { num: "349€", label: "to get a website that works for you, ready in 7 days" },
+      ],
+      bad_label: "Your current website",
       bad_items: [
         "Takes more than 3 seconds to load",
         "Looks broken or incomplete on mobile",
@@ -377,7 +395,7 @@ export const translations = {
         "Looks outdated and doesn't inspire trust",
         "You haven't updated it in years",
       ],
-      good_label: "Your Kuraianto website · from 349€",
+      good_label: "Your new website · from 349€",
       good_items: [
         "Loads in under 2 seconds",
         "Perfect on mobile and desktop",
@@ -387,6 +405,8 @@ export const translations = {
         "Ready in 7 days, no hassle",
       ],
       cta: "I want this for my business →",
+      cta_primary: "Get a website that converts — from 349€",
+      cta_secondary: "Chat on WhatsApp first",
     },
     meta: {
       home_title: "Professional Website from 349€ for Your Business | Kuraianto",
@@ -419,13 +439,13 @@ export const translations = {
     why: {
       label: "Why choose us",
       title: "What we do differently",
-      desc: "We do not just design a website. We think about how it will capture leads, how people will contact you and what happens next.",
+      desc: "We don't just build a website. We think about how it captures leads, how people reach you, and what happens next.",
       cta: "Request a quote",
       cta_msg: "Hi, I'd like to get a quote for my website.",
       items: [
         { title: "Websites built to capture leads", desc: "From the first design, we place WhatsApp, forms and calls to action where they make the most sense." },
         { title: "Strategy for local businesses", desc: "We build websites for clinics, restaurants, shops, freelancers and companies that need real clients, not just traffic." },
-        { title: "Simple and direct communication", desc: "We explain things clearly, without unnecessary technical language. You know what we are doing, why and how much it costs." },
+        { title: "Simple and direct communication", desc: "We keep it simple — no tech jargon. You always know what we're doing, why, and what it costs." },
         { title: "Website, traffic and follow-up", desc: "We can help with web design, SEO, ads and lead management so everything works together for your business." },
       ],
     },
@@ -463,9 +483,9 @@ export const translations = {
       guarantee_items: ["Written contract before we start", "No-commitment quote", "100% secure payment via Stripe"],
       deposit_note: "The deposit confirms your spot in our calendar and is deducted from the total price. Before we start, we send you the full contract.",
       deposit_label: "How does the deposit work?",
-      deposit_explain: "The deposit is deducted from the final price. You do not pay anything else until you approve the proposal.",
+      deposit_explain: "The deposit is deducted from the final price. You don't pay anything extra until you approve the proposal.",
       cta_reserve: "Pay deposit",
-      cta_pay: "Buy now",
+      cta_pay: "Order now",
       cta_demo: "Ask on WhatsApp",
       cta_wa: "Have questions? Ask us",
       cta_wa_text: "Prefer to talk first? Message us on WhatsApp.",
@@ -475,8 +495,8 @@ export const translations = {
       other_note: "For custom projects or combining services, write to us on WhatsApp.",
       other_cta: "Get a free recommendation",
       other_wa_msg: "Hi, I'd like to get a free recommendation on which services I need for my business.",
-      other_section_title: "Services that complete your digital system",
-      other_section_subtitle: "We don't sell isolated pieces. We combine website, traffic and follow-up so your business has more chances to win clients.",
+      other_section_title: "More ways we can help your business",
+      other_section_subtitle: "We combine website, traffic and follow-up so everything works together — and your business gets more clients.",
       other_cta_question: "Not sure what you need?",
       other_cta_desc: "We'll recommend the best starting point for your business, completely free.",
       other_cta_btn: "Get a free recommendation",
@@ -520,7 +540,7 @@ export const translations = {
           id: "starter",
           name: "Web Starter",
           price: "349€",
-          tagline: "For businesses that need professional online presence fast and without complications.",
+          tagline: "For businesses that need a professional website up fast, without the headaches.",
           features: [
             "Up to 5 pages or sections",
             "Responsive design (mobile & desktop)",
@@ -585,7 +605,7 @@ export const translations = {
         { q: "Do you work with any type of business?", a: "We work with clinics, restaurants, shops, real estate agencies, freelancers, offices, and any local or service business." },
         { q: "What is included in monthly maintenance?", a: "Security updates, backups, minor content changes, and technical support. From €50/month." },
         { q: "Can I just hire advertising if I already have a website?", a: "Yes. You can hire Google Ads, Meta Ads, or SEO without needing a new website." },
-        { q: "How do I request a quote?", a: "Via WhatsApp. It is the fastest way. We respond in under 24 hours with a detailed quote." },
+        { q: "How do I request a quote?", a: "Via WhatsApp. It's the fastest way. We get back to you in under 24 hours with a full quote." },
       ],
     },
     contact: {
@@ -601,14 +621,14 @@ export const translations = {
       email_label: "info@kuraianto.com",
       wa_label: "WhatsApp → +32 485 25 11 10",
       form: {
-        header: "We start by understanding your business.",
+        header: "We start by getting to know your business.",
         name: "Your name",
         phone: "Phone or email",
         service: "Which service are you interested in?",
         opts: ["New website", "Website redesign", "SEO", "Google Ads", "Meta Ads", "Automation / CRM", "Not sure"],
         website: "Do you currently have a website?",
         website_opts: ["Yes, I want to improve it", "No, I want to create a new one", "I'm not sure"],
-        msg_placeholder: "Tell us about your business, sector and what you are looking for",
+        msg_placeholder: "Tell us about your business, your sector, and what you're looking for",
         submit: "Send on WhatsApp",
       },
     },
@@ -681,6 +701,7 @@ export const translations = {
       card_sub: "We praten vandaag en beginnen deze week.",
       phone: "+32 485 25 11 10",
     },
+    marquee: ["Website in 7 dagen", "Vanaf 349€", "Responsive design", "Meta Pixel inbegrepen", "SEO vanaf dag 1", "WhatsApp geïntegreerd", "Veilige betaling via Stripe", "Geen kleine lettertjes", "Google Maps inbegrepen", "Meetbare resultaten", "Geen contracten", "Klaar deze week", "Voor lokale bedrijven", "3 pakketten beschikbaar"],
     demo_bar: {
       badge: "Snel antwoord",
       title: "Vragen voor je bestelt?",
@@ -692,7 +713,14 @@ export const translations = {
     antes_despues: {
       label: "Het probleem",
       title: "Herken je jouw huidige website?",
-      bad_label: "Website die klanten verliest",
+      pain_headline: "Je verliest klanten. Je huidige website werkt niet voor jou.",
+      pain_sub: "De meeste websites voor lokale bedrijven zijn gemaakt om er goed uit te zien, niet om te verkopen. Hier is het verschil.",
+      stats: [
+        { num: "73%", label: "van de mensen beoordeelt jouw bedrijf op basis van je website voor ze contact opnemen" },
+        { num: "8 sec", label: "is hoe lang een bezoeker wacht voor ze weggaan als ze niet vinden wat ze zoeken" },
+        { num: "349€", label: "voor een website die voor jou werkt, klaar in 7 dagen" },
+      ],
+      bad_label: "Je huidige website",
       bad_items: [
         "Duurt meer dan 3 seconden om te laden",
         "Ziet er slecht uit of onvolledig op mobiel",
@@ -701,7 +729,7 @@ export const translations = {
         "Ziet er verouderd uit en wekt geen vertrouwen",
         "Je hebt het al jaren niet aangepast",
       ],
-      good_label: "Jouw Kuraianto website · vanaf 349€",
+      good_label: "Jouw nieuwe website · vanaf 349€",
       good_items: [
         "Laadt in minder dan 2 seconden",
         "Perfect op mobiel en desktop",
@@ -711,6 +739,8 @@ export const translations = {
         "Klaar in 7 dagen, zonder gedoe",
       ],
       cta: "Ik wil dit voor mijn bedrijf →",
+      cta_primary: "Ik wil een website die converteert — vanaf 349€",
+      cta_secondary: "Eerst chatten via WhatsApp",
     },
     meta: {
       home_title: "Professionele website vanaf 349€ voor jouw bedrijf | Kuraianto",
@@ -799,7 +829,7 @@ export const translations = {
       other_note: "Voor maatwerk of gecombineerde diensten, schrijf ons via WhatsApp.",
       other_cta: "Gratis advies aanvragen",
       other_wa_msg: "Hallo, ik wil graag een gratis advies aanvragen over welke diensten ik nodig heb voor mijn bedrijf.",
-      other_section_title: "Diensten die jouw digitaal systeem compleet maken",
+      other_section_title: "Meer manieren waarop we jouw bedrijf helpen",
       other_section_subtitle: "We verkopen geen losse onderdelen. We combineren website, verkeer en opvolging zodat jouw bedrijf meer kansen heeft om klanten te winnen.",
       other_cta_question: "Weet je niet wat je nodig hebt?",
       other_cta_desc: "We raden je gratis het beste startpunt aan voor jouw bedrijf.",
@@ -1005,6 +1035,7 @@ export const translations = {
       card_sub: "On discute aujourd'hui et on commence cette semaine.",
       phone: "+32 485 25 11 10",
     },
+    marquee: ["Site web en 7 jours", "À partir de 349€", "Design responsive", "Meta Pixel inclus", "SEO dès le 1er jour", "WhatsApp intégré", "Paiement sécurisé via Stripe", "Sans frais cachés", "Google Maps inclus", "Résultats mesurables", "Sans engagement", "Prêt cette semaine", "Pour les entreprises locales", "3 offres disponibles"],
     demo_bar: {
       badge: "Réponse rapide",
       title: "Des questions avant de commander ?",
@@ -1016,7 +1047,14 @@ export const translations = {
     antes_despues: {
       label: "Le problème",
       title: "Votre site actuel ressemble-t-il à ça ?",
-      bad_label: "Site web qui perd des clients",
+      pain_headline: "Vous perdez des clients. Votre site actuel ne travaille pas pour vous.",
+      pain_sub: "La plupart des sites pour entreprises locales sont conçus pour faire bonne impression, pas pour vendre. Voici la différence.",
+      stats: [
+        { num: "73%", label: "des gens jugent votre entreprise sur votre site avant de vous contacter" },
+        { num: "8 sec", label: "c'est le temps qu'attend un visiteur avant de partir s'il ne trouve pas ce qu'il cherche" },
+        { num: "349€", label: "pour avoir un site qui travaille pour vous, livré en 7 jours" },
+      ],
+      bad_label: "Votre site actuel",
       bad_items: [
         "Met plus de 3 secondes à se charger",
         "S'affiche mal ou est incomplet sur mobile",
@@ -1025,7 +1063,7 @@ export const translations = {
         "Semble dépassé et n'inspire pas confiance",
         "Vous n'y avez touché depuis des années",
       ],
-      good_label: "Votre site Kuraianto · à partir de 349€",
+      good_label: "Votre nouveau site · à partir de 349€",
       good_items: [
         "Se charge en moins de 2 secondes",
         "Parfait sur mobile et bureau",
@@ -1035,6 +1073,8 @@ export const translations = {
         "Livré en 7 jours, sans complications",
       ],
       cta: "Je veux ça pour mon entreprise →",
+      cta_primary: "Je veux un site qui vend — à partir de 349€",
+      cta_secondary: "D'abord discuter sur WhatsApp",
     },
     meta: {
       home_title: "Site Web Professionnel à partir de 349€ | Kuraianto",
@@ -1067,7 +1107,7 @@ export const translations = {
     why: {
       label: "Pourquoi nous choisir",
       title: "Ce que nous faisons différemment",
-      desc: "Nous ne concevons pas seulement un site web. Nous réfléchissons à comment il va capturer des contacts, comment les gens vont vous écrire et ce qui se passe ensuite.",
+      desc: "Nous ne créons pas seulement un site web. Nous réfléchissons à la façon dont il va capter des contacts, comment vos clients vont vous écrire et ce qui se passe ensuite.",
       cta: "Demander un devis",
       cta_msg: "Bonjour, je souhaiterais demander un devis pour mon site web.",
       items: [
@@ -1093,7 +1133,7 @@ export const translations = {
       title: "Projets réels",
       desc: "Sites web et projets digitaux déjà en ligne. Pas d'exemples fictifs, pas de chiffres inventés.",
       visit: "Visiter le site",
-      bottom_q: "Votre entreprise peut être la prochaine ?",
+      bottom_q: "Et si votre entreprise était la prochaine ?",
       bottom_desc: "Écrivez-nous sur WhatsApp et nous vous expliquons comment pourrait ressembler votre nouveau site.",
       bottom_cta: "Discuter sur WhatsApp",
       items: [
@@ -1123,7 +1163,7 @@ export const translations = {
       other_note: "Pour des projets sur mesure ou combiner des services, écrivez-nous sur WhatsApp.",
       other_cta: "Demander une recommandation gratuite",
       other_wa_msg: "Bonjour, je souhaiterais obtenir une recommandation gratuite sur les services dont j'ai besoin pour mon entreprise.",
-      other_section_title: "Des services qui complètent votre système digital",
+      other_section_title: "D'autres façons d'aider votre entreprise",
       other_section_subtitle: "Nous ne vendons pas des éléments isolés. Nous combinons site web, trafic et suivi pour que votre entreprise ait plus de chances de conquérir des clients.",
       other_cta_question: "Vous ne savez pas ce dont vous avez besoin ?",
       other_cta_desc: "Nous vous recommandons gratuitement le meilleur point de départ pour votre entreprise.",

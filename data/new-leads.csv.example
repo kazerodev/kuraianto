@@ -1,0 +1,5 @@
+Business name,Phone,Email,Address,City,Country,Website,Sector,Source,Notes
+Restaurante El Mar,600123456,info@elmar.es,Calle del Mar 12,Marbella,España,https://elmar.es,Restaurante,Apollo CSV,Sin web propia detectada
+Clínica Dental Sonrisa,+34911234567,contacto@sonrisa.com,Av. Principal 5,Madrid,España,,Clínica dental,Google Maps manual,Solo tiene página de Facebook
+Peluquería Luna,612987654,,Calle Mayor 8,Barcelona,España,,Peluquería,Manual research,No tiene presencia online
+Taller Mecánico García,34644321098,taller@garcia.net,Polígono Industrial 3,Valencia,España,http://garciatauto.es,Taller mecánico,Directorio web,Web antigua sin móvil

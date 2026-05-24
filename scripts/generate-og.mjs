@@ -5,130 +5,115 @@ import { dirname, join } from "path";
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const outPath = join(__dir, "../public/og-image.png");
+const logoPath = join(__dir, "../public/logo-kuraianto.jpg");
 
-// 1200x630 — standard OG size
 const W = 1200;
 const H = 630;
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <defs>
-    <!-- Main background gradient: near-black with slight warm tone -->
     <linearGradient id="bg" x1="0" y1="0" x2="${W}" y2="${H}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#0d0d0d"/>
-      <stop offset="100%" stop-color="#111010"/>
+      <stop offset="100%" stop-color="#0f0e0e"/>
     </linearGradient>
-
-    <!-- Orange glow blob top-right -->
-    <radialGradient id="glow1" cx="85%" cy="15%" r="40%" gradientUnits="objectBoundingBox">
-      <stop offset="0%" stop-color="#f97316" stop-opacity="0.18"/>
+    <radialGradient id="glow1" cx="88%" cy="10%" r="45%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
     </radialGradient>
-
-    <!-- Orange glow blob bottom-left -->
-    <radialGradient id="glow2" cx="0%" cy="100%" r="50%" gradientUnits="objectBoundingBox">
-      <stop offset="0%" stop-color="#ea580c" stop-opacity="0.12"/>
+    <radialGradient id="glow2" cx="5%" cy="95%" r="45%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#ea580c" stop-opacity="0.1"/>
       <stop offset="100%" stop-color="#ea580c" stop-opacity="0"/>
     </radialGradient>
-
-    <!-- Subtle grid pattern -->
-    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-width="0.4" opacity="0.06"/>
-    </pattern>
-
-    <!-- Orange horizontal line gradient -->
     <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#f97316" stop-opacity="0"/>
-      <stop offset="30%" stop-color="#f97316" stop-opacity="1"/>
-      <stop offset="70%" stop-color="#f97316" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#f97316" stop-opacity="1"/>
+      <stop offset="75%" stop-color="#f97316" stop-opacity="1"/>
       <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
     </linearGradient>
+    <clipPath id="logoClip">
+      <circle cx="76" cy="72" r="44"/>
+    </clipPath>
   </defs>
 
   <!-- Background -->
   <rect width="${W}" height="${H}" fill="url(#bg)"/>
 
-  <!-- Grid texture -->
-  <rect width="${W}" height="${H}" fill="url(#grid)"/>
-
-  <!-- Glow blobs -->
+  <!-- Ambient glows -->
   <rect width="${W}" height="${H}" fill="url(#glow1)"/>
   <rect width="${W}" height="${H}" fill="url(#glow2)"/>
 
-  <!-- Left accent bar -->
-  <rect x="80" y="160" width="3" height="300" fill="#f97316" opacity="0.9" rx="2"/>
+  <!-- Logo placeholder circle (filled by composite step) -->
+  <circle cx="76" cy="72" r="44" fill="#1a1a1a"/>
 
-  <!-- Orange divider line (above tagline) -->
-  <rect x="0" y="418" width="${W}" height="1" fill="url(#lineGrad)"/>
-
-  <!-- KURAIANTO — main wordmark -->
+  <!-- Logo area label: "DIGITAL AGENCY" top right -->
   <text
-    x="115"
-    y="320"
-    font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif"
-    font-size="128"
-    font-weight="900"
-    letter-spacing="-4"
+    x="${W - 80}" y="80"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="12" font-weight="700" letter-spacing="3.5"
+    text-anchor="end" fill="#f97316" opacity="0.65"
+  >DIGITAL AGENCY</text>
+
+  <!-- Left accent bar -->
+  <rect x="80" y="176" width="3" height="260" fill="#f97316" opacity="0.85" rx="1.5"/>
+
+  <!-- Main wordmark -->
+  <text
+    x="112" y="316"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="122" font-weight="900" letter-spacing="-3"
     fill="#ffffff"
   >KURAIANTO</text>
 
-  <!-- Orange dot after wordmark -->
-  <circle cx="1128" cy="278" r="10" fill="#f97316"/>
+  <!-- Orange dot -->
+  <circle cx="1118" cy="276" r="9" fill="#f97316"/>
 
   <!-- Subtitle -->
   <text
-    x="115"
-    y="390"
-    font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif"
-    font-size="26"
-    font-weight="400"
-    letter-spacing="2"
-    fill="#a3a3a3"
+    x="112" y="383"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="24" font-weight="400" letter-spacing="2"
+    fill="#737373"
   >Web Design · SEO · Digital Marketing</text>
 
-  <!-- Bottom row: tagline left, domain right -->
+  <!-- Divider line -->
+  <rect x="0" y="430" width="${W}" height="1" fill="url(#lineGrad)"/>
+
+  <!-- Tagline -->
   <text
-    x="115"
-    y="490"
-    font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif"
-    font-size="20"
-    font-weight="600"
-    letter-spacing="0.5"
+    x="112" y="492"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="19" font-weight="600" letter-spacing="0.3"
     fill="#f97316"
   >Free demo before you decide. No contracts.</text>
 
+  <!-- Domain -->
   <text
-    x="${W - 80}"
-    y="490"
-    font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif"
-    font-size="18"
-    font-weight="400"
-    letter-spacing="1"
-    text-anchor="end"
-    fill="#525252"
+    x="${W - 80}" y="492"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="17" font-weight="400" letter-spacing="1"
+    text-anchor="end" fill="#404040"
   >kuraianto.com</text>
 
-  <!-- Top-right: "Digital Agency" label -->
-  <text
-    x="${W - 80}"
-    y="80"
-    font-family="'Helvetica Neue', Arial, 'Liberation Sans', sans-serif"
-    font-size="13"
-    font-weight="700"
-    letter-spacing="3"
-    text-anchor="end"
-    fill="#f97316"
-    opacity="0.7"
-  >DIGITAL AGENCY</text>
-
-  <!-- Corner accents: top-left bracket -->
-  <path d="M 60 60 L 60 40 L 80 40" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-  <!-- Corner accents: bottom-right bracket -->
-  <path d="M ${W - 60} ${H - 60} L ${W - 60} ${H - 40} L ${W - 80} ${H - 40}" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <!-- Corner accent: top-left -->
+  <path d="M 52 50 L 52 36 L 66 36" fill="none" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <!-- Corner accent: bottom-right -->
+  <path d="M ${W-52} ${H-50} L ${W-52} ${H-36} L ${W-66} ${H-36}" fill="none" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
 </svg>`;
 
-const png = await sharp(Buffer.from(svg))
+// Step 1: render SVG to PNG buffer
+const base = await sharp(Buffer.from(svg)).png().toBuffer();
+
+// Step 2: resize logo to 88x88, make circular
+const logoCircle = await sharp(logoPath)
+  .resize(88, 88, { fit: "cover" })
+  .png()
+  .toBuffer();
+
+// Step 3: composite logo onto base at top-left (cx=76, cy=72, so top-left = 76-44=32, 72-44=28)
+const final = await sharp(base)
+  .composite([{ input: logoCircle, left: 32, top: 28, blend: "over" }])
   .png({ compressionLevel: 9 })
   .toBuffer();
 
-writeFileSync(outPath, png);
-console.log(`✓ Created ${outPath} (${(png.length / 1024).toFixed(1)} kB)`);
+writeFileSync(outPath, final);
+console.log(`✓ Created ${outPath} (${(final.length / 1024).toFixed(1)} kB)`);

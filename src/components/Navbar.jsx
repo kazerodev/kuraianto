@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLang } from "../context/LangContext";
 
 const WA_BASE = "https://wa.me/32485251110";
@@ -102,20 +102,33 @@ function MobileLangGrid({ lang, setLang, langLabel }) {
 }
 
 /* ── Navbar ────────────────────────────────────────────── */
+const LANG_PATHS = { es: "/", en: "/en", nl: "/nl", fr: "/fr" };
+
 export default function Navbar() {
   const { lang, setLang, t } = useLang();
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/" || location.pathname === "/en" || location.pathname === "/nl" || location.pathname === "/fr";
 
+  function handleSetLang(code) {
+    setLang(code);
+    navigate(LANG_PATHS[code] || "/");
+  }
+
+  const homeBase = LANG_PATHS[lang] || "/";
   const links = [
-    { href: isHome ? "#planes"   : "/#planes",   label: t.nav.plans   },
-    { href: isHome ? "#clientes" : "/#clientes", label: t.nav.clients },
-    { href: isHome ? "#faq"      : "/#faq",      label: t.nav.faq     },
-    { href: isHome ? "#contacto" : "/#contacto", label: t.nav.contact },
+    { href: isHome ? "#planes"   : `${homeBase}#planes`,   label: t.nav.plans   },
+    { href: isHome ? "#clientes" : `${homeBase}#clientes`, label: t.nav.clients },
+    { href: isHome ? "#faq"      : `${homeBase}#faq`,      label: t.nav.faq     },
+    { href: isHome ? "#contacto" : `${homeBase}#contacto`, label: t.nav.contact },
   ];
 
-  const demoHref = `${WA_BASE}?text=${encodeURIComponent(t.hero?.demo_msg || "")}`;
+  const stripeStarter = t.pricing?.plans?.[0]?.stripe || "https://buy.stripe.com/9B69AM04B4kQ9aca4Nc7u09";
+  const trackStripeClick = () => {
+    if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
+    if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-[#080808]/95 backdrop-blur-md border-b border-white/[0.06]">
@@ -147,13 +160,14 @@ export default function Navbar() {
 
         {/* Right — lang + CTA */}
         <div className="flex items-center gap-3">
-          <LangDropdown lang={lang} setLang={setLang} />
+          <LangDropdown lang={lang} setLang={handleSetLang} />
           <div className="w-px h-4 bg-white/[0.1]" />
           <a
-            href={demoHref}
+            href={stripeStarter}
             target="_blank"
             rel="noopener noreferrer"
-            data-event="nav-demo-cta"
+            data-event="nav-stripe-cta"
+            onClick={trackStripeClick}
             className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white text-[13.5px] font-bold px-5 py-2.5 rounded-full transition-colors duration-200 shadow-md shadow-orange-500/20 whitespace-nowrap"
           >
             {t.nav.cta_demo}
@@ -172,7 +186,7 @@ export default function Navbar() {
 
         {/* Right: lang switcher + hamburger */}
         <div className="flex items-center gap-1">
-          <LangDropdown lang={lang} setLang={setLang} />
+          <LangDropdown lang={lang} setLang={handleSetLang} />
           <button
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? t.nav.menu_close : t.nav.menu_open}
@@ -218,16 +232,16 @@ export default function Navbar() {
           </div>
           <div className="px-5 pb-6 space-y-4">
             <a
-              href={demoHref}
+              href={stripeStarter}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              data-event="nav-mobile-demo-cta"
+              onClick={() => { setMobileOpen(false); trackStripeClick(); }}
+              data-event="nav-mobile-stripe-cta"
               className="flex items-center justify-center w-full bg-orange-500 hover:bg-orange-400 text-white font-bold text-[14px] py-4 rounded-xl transition-colors duration-200 shadow-lg shadow-orange-500/20"
             >
               {t.nav.cta_demo}
             </a>
-            <MobileLangGrid lang={lang} setLang={setLang} langLabel={t.nav.lang_label} />
+            <MobileLangGrid lang={lang} setLang={handleSetLang} langLabel={t.nav.lang_label} />
           </div>
         </div>
       )}

@@ -38,9 +38,16 @@ function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-4">{f.services_title}</h4>
             <ul className="space-y-2">
-              {f.services.map((s) => (
-                <li key={s} className="text-sm">{s}</li>
-              ))}
+              {f.services.map((s, i) => {
+                const hrefs = ["/diseno-web", "/seo-local", "/google-ads", null, null, null];
+                return (
+                  <li key={s} className="text-sm">
+                    {hrefs[i] ? (
+                      <Link to={hrefs[i]} className="hover:text-white transition-colors">{s}</Link>
+                    ) : s}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
