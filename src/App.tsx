@@ -1,17 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { LangProvider, useLang } from "./context/LangContext";
 import Inicio from "./pages/Inicio";
-import CRM from "./pages/CRM";
-import Politicas from "./pages/Politicas";
-import DisenoWeb from "./pages/DisenoWeb";
-import SeoLocal from "./pages/SeoLocal";
-import GoogleAds from "./pages/GoogleAds";
-import Gracias from "./pages/Gracias";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
+
+const Politicas = lazy(() => import("./pages/Politicas"));
+const DisenoWeb = lazy(() => import("./pages/DisenoWeb"));
+const SeoLocal = lazy(() => import("./pages/SeoLocal"));
+const GoogleAds = lazy(() => import("./pages/GoogleAds"));
+const Gracias = lazy(() => import("./pages/Gracias"));
+const NoEncontrado = lazy(() => import("./pages/NoEncontrado"));
 
 function LangSync() {
   const location = useLocation();
@@ -37,19 +38,21 @@ const App: React.FC = () => {
           <div className="app-container">
             <Navbar />
             <main className="main-content">
-              <Routes>
-                <Route path="/" element={<Inicio />} />
-                <Route path="/en" element={<Inicio />} />
-                <Route path="/nl" element={<Inicio />} />
-                <Route path="/fr" element={<Inicio />} />
-                <Route path="/crm" element={<CRM />} />
-                <Route path="/planes" element={<Navigate to="/#planes" replace />} />
-                <Route path="/politicas" element={<Politicas />} />
-                <Route path="/diseno-web" element={<DisenoWeb />} />
-                <Route path="/seo-local" element={<SeoLocal />} />
-                <Route path="/google-ads" element={<GoogleAds />} />
-                <Route path="/gracias" element={<Gracias />} />
-              </Routes>
+              <Suspense fallback={<div style={{ minHeight: "60vh" }} />}>
+                <Routes>
+                  <Route path="/" element={<Inicio />} />
+                  <Route path="/en" element={<Inicio />} />
+                  <Route path="/nl" element={<Inicio />} />
+                  <Route path="/fr" element={<Inicio />} />
+                  <Route path="/planes" element={<Navigate to="/#planes" replace />} />
+                  <Route path="/politicas" element={<Politicas />} />
+                  <Route path="/diseno-web" element={<DisenoWeb />} />
+                  <Route path="/seo-local" element={<SeoLocal />} />
+                  <Route path="/google-ads" element={<GoogleAds />} />
+                  <Route path="/gracias" element={<Gracias />} />
+                  <Route path="*" element={<NoEncontrado />} />
+                </Routes>
+              </Suspense>
             </main>
             <Footer />
           </div>

@@ -1,9 +1,45 @@
 {
   "rewrites": [
-    { "source": "/en", "destination": "/en.html" },
-    { "source": "/nl", "destination": "/nl.html" },
-    { "source": "/fr", "destination": "/fr.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/en",
+      "destination": "/en.html"
+    },
+    {
+      "source": "/nl",
+      "destination": "/nl.html"
+    },
+    {
+      "source": "/fr",
+      "destination": "/fr.html"
+    },
+    {
+      "source": "/planes",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/politicas",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/diseno-web",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/seo-local",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/google-ads",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/gracias",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {

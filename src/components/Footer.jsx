@@ -36,7 +36,7 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4">{f.services_title}</h4>
+            <h3 className="text-white font-semibold text-sm mb-4">{f.services_title}</h3>
             <ul className="space-y-2">
               {f.services.map((s, i) => {
                 const hrefs = ["/diseno-web", "/seo-local", "/google-ads", null, null, null];
@@ -52,7 +52,7 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4">{f.plans_title}</h4>
+            <h3 className="text-white font-semibold text-sm mb-4">{f.plans_title}</h3>
             <ul className="space-y-2">
               {f.plans.map((p) => (
                 <li key={p} className="text-sm">{p}</li>
@@ -61,11 +61,11 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4">{f.contact_title}</h4>
+            <h3 className="text-white font-semibold text-sm mb-4">{f.contact_title}</h3>
             <p className="text-sm mb-1">kuraianto.com</p>
             <a href="mailto:info@kuraianto.com" className="text-sm block mb-1 hover:text-white transition-colors">info@kuraianto.com</a>
             <p className="text-sm mb-6">+32 485 25 11 10</p>
-            <h4 className="text-white font-semibold text-sm mb-3">{f.legal_title}</h4>
+            <h3 className="text-white font-semibold text-sm mb-3">{f.legal_title}</h3>
             <ul className="space-y-2">
               {f.policies.map((p) => (
                 <li key={p.hash}>
@@ -79,6 +79,14 @@ function Footer() {
               ))}
             </ul>
           </div>
+        </div>
+
+        <div className="border-t border-white/5 pt-6 mb-4">
+          <p className="text-[11px] leading-relaxed text-neutral-400">
+            David Toledo Romero &middot; [Calle y numero], 2800 Mechelen, B&eacute;lgica
+            &middot; BTW BE1036325630 &middot; info@kuraianto.com &middot; +32 485 25 11 10
+            &middot; R&eacute;gimen de franquicia para peque&ntilde;as empresas (art. 56bis), sin IVA repercutido
+          </p>
         </div>
 
         <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs gap-2">

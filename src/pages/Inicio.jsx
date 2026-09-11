@@ -156,13 +156,13 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
-      <input type="text" placeholder={f.name} value={nombre} onChange={(e) => setNombre(e.target.value)} required className={field} />
-      <input type="text" placeholder={f.phone} value={contacto} onChange={(e) => setContacto(e.target.value)} className={field} />
-      <select value={servicio} onChange={(e) => setServicio(e.target.value)} className={`${field} appearance-none cursor-pointer`}>
+      <input type="text" aria-label={f.name} autoComplete="name" placeholder={f.name} value={nombre} onChange={(e) => setNombre(e.target.value)} required className={field} />
+      <input type="text" aria-label={f.phone} autoComplete="tel" placeholder={f.phone} value={contacto} onChange={(e) => setContacto(e.target.value)} className={field} />
+      <select aria-label={f.service} value={servicio} onChange={(e) => setServicio(e.target.value)} className={`${field} appearance-none cursor-pointer`}>
         <option value="">{f.service}</option>
         {f.opts.map((o) => <option key={o} value={o}>{o}</option>)}
       </select>
-      <textarea placeholder={f.msg_placeholder} value={mensaje} onChange={(e) => setMensaje(e.target.value)} rows={3} className={`${field} resize-none`} />
+      <textarea aria-label={f.msg_placeholder} placeholder={f.msg_placeholder} value={mensaje} onChange={(e) => setMensaje(e.target.value)} rows={3} className={`${field} resize-none`} />
       <button
         type="submit"
         data-event="contact-submit"
