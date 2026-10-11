@@ -1,5 +1,5 @@
 export const KIT_PRECIO = 29;
-export const KIT_STRIPE = "";
+export const KIT_STRIPE = "https://buy.stripe.com/14AdR25oV7x21HK2Clc7u0c";
 export const PROMPTS_PDF = "/descargas/10-prompts-kuraianto.pdf";
 export const WA = "https://wa.me/32485251110";
 

@@ -29,7 +29,10 @@ export default function KitGracias() {
           setTimeout(() => evento("Purchase", { value: KIT_PRECIO, currency: "EUR", content_name: "Kit IA", content_ids: ["kit-ia"], content_type: "product" }, { eventID: sessionId }), 1200);
         }
       })
-      .catch(() => activo && setEstado("error"));
+      .catch((e) => {
+        if (!activo) return;
+        setEstado(e.message === "configuracion" ? "manual" : "error");
+      });
     return () => {
       activo = false;
     };
@@ -50,6 +53,17 @@ export default function KitGracias() {
           <div className="mt-12">
             <h1 className="text-3xl font-black tracking-tight text-stone-900">Comprobando tu pago...</h1>
             <p className="text-stone-600 mt-3">Solo tarda unos segundos.</p>
+          </div>
+        )}
+
+        {estado === "manual" && (
+          <div className="mt-12">
+            <span className="inline-block text-orange-600 text-xs font-bold tracking-[0.14em] uppercase">Pago recibido</span>
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-stone-900 mt-3 mb-4 leading-[1.05]">Gracias por tu compra.</h1>
+            <p className="text-stone-600 text-lg leading-relaxed">Te enviamos el Kit IA al email que has usado en el pago, normalmente en pocos minutos. Si tienes prisa, escríbenos por WhatsApp y te lo mandamos ahora.</p>
+            <a href={`${WA}?text=${encodeURIComponent("Hola, acabo de comprar el Kit IA. Mi email de compra es: ")}`} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center justify-center w-full sm:w-auto px-7 py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-bold transition-colors">
+              Pedirlo por WhatsApp
+            </a>
           </div>
         )}
 
