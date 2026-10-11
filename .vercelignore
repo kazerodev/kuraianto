@@ -1,0 +1,18 @@
+Claude outputs
+fabrica
+agencia
+hermes-kit
+demos
+data
+scripts
+content
+credentials.json
+.env
+.env.*
+*.zip
+*.bat
+publicar-web.js
+publicar-web.cjs
+publicar-log.txt
+dist
+node_modules
