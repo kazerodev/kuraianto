@@ -1,10 +1,14 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const WA_CONFIRM = `https://wa.me/32485251110?text=${encodeURIComponent("Hola, acabo de realizar mi compra en Kuraianto y quiero coordinar el inicio del proyecto.")}`;
 
 export default function Gracias() {
+  const [params] = useSearchParams();
+  const plan = params.get("plan");
+  const briefUrl = plan ? `/empezar?plan=${plan}` : "/empezar";
+
   useEffect(() => {
     if (window.fbq) {
       window.fbq("track", "Purchase", { currency: "EUR" });
@@ -15,40 +19,47 @@ export default function Gracias() {
   }, []);
 
   const steps = [
-    "Recibirás email de confirmación",
-    "Te contactamos en menos de 24 horas",
-    "Te enviamos el contrato para firmar",
-    "Empezamos con tu proyecto",
+    "Rellena el formulario con los datos de tu negocio (5 minutos)",
+    "Empezamos con tu web ese mismo día",
+    "Te enviamos el enlace para verla y pedir cambios",
+    "Con tu ok, la publicamos en tu dominio",
   ];
 
   return (
-    <div className="bg-neutral-950 min-h-screen flex items-center justify-center px-5 py-20">
+    <div className="bg-[#FAF9F6] min-h-screen flex items-center justify-center px-5 py-20">
       <Helmet>
         <title>¡Gracias por tu compra! | Kuraianto</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="max-w-lg mx-auto text-center w-full">
-        <div className="w-20 h-20 rounded-full bg-green-500/15 border border-green-500/25 flex items-center justify-center mx-auto mb-8" style={{ boxShadow: "0 0 40px rgba(34,197,94,0.15)" }}>
+        <div className="w-20 h-20 rounded-full bg-green-100 border border-green-200 flex items-center justify-center mx-auto mb-8" style={{ boxShadow: "0 0 40px rgba(34,197,94,0.15)" }}>
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20 6L9 17l-5-5" />
           </svg>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight">¡Muchas gracias!</h1>
-        <p className="text-neutral-400 text-base leading-relaxed mb-2">
+        <h1 className="text-4xl sm:text-5xl font-black text-stone-900 mb-4 leading-tight">¡Muchas gracias!</h1>
+        <p className="text-stone-600 text-base leading-relaxed mb-2">
           Hemos recibido tu compra correctamente.
         </p>
-        <p className="text-neutral-500 text-sm mb-10">Nos pondremos en contacto contigo en menos de 24 horas.</p>
+        <p className="text-stone-600 text-sm mb-8">Solo falta un paso para empezar: cuéntanos cómo es tu negocio.</p>
+        <Link
+          to={briefUrl}
+          className="inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-8 py-4 rounded-full text-base transition-all hover:-translate-y-0.5 mb-10 w-full sm:w-auto"
+          style={{ boxShadow: "0 4px 20px rgba(249,115,22,0.3)" }}
+        >
+          Rellenar los datos de mi negocio
+        </Link>
 
-        <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-6 mb-8 text-left">
-          <p className="text-neutral-500 text-[11px] font-semibold uppercase tracking-widest mb-4">Qué pasa ahora</p>
+        <div className="rounded-2xl border border-stone-200 bg-white p-6 mb-8 text-left">
+          <p className="text-stone-600 text-[11px] font-semibold uppercase tracking-widest mb-4">Qué pasa ahora</p>
           {steps.map((step, i) => (
-            <div key={i} className="flex items-start gap-3.5 py-3 border-b border-white/[0.05] last:border-0">
-              <span className="w-6 h-6 rounded-full bg-orange-500/15 text-orange-400 text-[11px] font-black flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div key={i} className="flex items-start gap-3.5 py-3 border-b border-stone-200 last:border-0">
+              <span className="w-6 h-6 rounded-full bg-orange-100 text-orange-600 text-[11px] font-black flex items-center justify-center flex-shrink-0 mt-0.5">
                 {i + 1}
               </span>
-              <p className="text-neutral-300 text-sm leading-snug pt-0.5">{step}</p>
+              <p className="text-stone-700 text-sm leading-snug pt-0.5">{step}</p>
             </div>
           ))}
         </div>
@@ -58,7 +69,7 @@ export default function Gracias() {
             href={WA_CONFIRM}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold px-6 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5"
             style={{ boxShadow: "0 4px 20px rgba(34,197,94,0.3)" }}
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -68,7 +79,7 @@ export default function Gracias() {
           </a>
           <Link
             to="/"
-            className="inline-flex items-center justify-center gap-2 border border-white/15 text-neutral-300 font-semibold px-6 py-4 rounded-full text-sm transition-all hover:bg-white/5 hover:border-white/30"
+            className="inline-flex items-center justify-center gap-2 border border-stone-300 text-stone-700 font-semibold px-6 py-4 rounded-full text-sm transition-all hover:bg-stone-100 hover:border-stone-900"
           >
             Volver al inicio
           </Link>

@@ -22,7 +22,7 @@ function Reveal({ children, delay = 0, className = "" }) {
     return () => obs.disconnect();
   }, []);
   return (
-    <div ref={ref} className={className} style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateY(22px)", transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms` }}>
+    <div ref={ref} className={className} style={{ opacity: 1, transform: v ? "none" : "translateY(14px)", transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms` }}>
       {children}
     </div>
   );
@@ -31,14 +31,14 @@ function Reveal({ children, delay = 0, className = "" }) {
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className={`border-b last:border-0 transition-colors duration-300 ${open ? "border-orange-500/15" : "border-white/[0.07]"}`}>
+    <div className={`border-b last:border-0 transition-colors duration-300 ${open ? "border-orange-200" : "border-stone-200"}`}>
       <button type="button" onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-start gap-5 text-left py-5 bg-transparent border-0 cursor-pointer group"
       >
-        <span className={`font-medium text-sm leading-snug transition-colors duration-200 ${open ? "text-white" : "text-neutral-300 group-hover:text-white"}`}>
+        <span className={`font-medium text-sm leading-snug transition-colors duration-200 ${open ? "text-stone-900" : "text-stone-700 group-hover:text-stone-900"}`}>
           {question}
         </span>
-        <span className={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300 ${open ? "bg-orange-500 border-orange-500 text-white" : "border-white/15 text-neutral-500 group-hover:border-orange-500/50 group-hover:text-orange-400"}`}
+        <span className={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300 ${open ? "bg-orange-600 border-orange-500 text-white" : "border-stone-300 text-stone-500 group-hover:border-orange-500/50 group-hover:text-orange-600"}`}
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
             <path d="M5 1v8M1 5h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
@@ -46,7 +46,7 @@ function FAQItem({ question, answer }) {
         </span>
       </button>
       <div style={{ maxHeight: open ? "600px" : "0", overflow: "hidden", transition: "max-height 0.38s ease" }}>
-        <p className="pb-5 text-neutral-400 text-sm leading-relaxed pr-10">{answer}</p>
+        <p className="pb-5 text-stone-600 text-sm leading-relaxed pr-10">{answer}</p>
       </div>
     </div>
   );
@@ -94,7 +94,7 @@ const FAQS = [
 
 export default function DisenoWeb() {
   return (
-    <div className="bg-neutral-950 overflow-x-hidden">
+    <div className="bg-[#FAF9F6] overflow-x-hidden">
       <Helmet>
         <html lang="es" />
         <title>Diseño Web Profesional para Negocios Locales | Desde 349€ | Kuraianto</title>
@@ -159,14 +159,14 @@ export default function DisenoWeb() {
         <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-10">
           <Reveal>
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 text-orange-400 text-xs font-semibold tracking-widest uppercase mb-6">
-                <span className="w-6 h-px bg-orange-500" />
+              <span className="inline-flex items-center gap-2 text-orange-600 text-xs font-semibold tracking-widest uppercase mb-6">
+                <span className="w-6 h-px bg-orange-600" />
                 Diseño Web
               </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 leading-tight mb-6">
                 Diseño web profesional para negocios que quieren conseguir clientes
               </h1>
-              <p className="text-neutral-400 text-lg leading-relaxed mb-8 max-w-xl">
+              <p className="text-stone-600 text-lg leading-relaxed mb-8 max-w-xl">
                 No diseñamos webs para que queden bonitas. Las diseñamos para que vendan. Pago seguro con Stripe, listo en 7 días, desde 349€.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
@@ -179,18 +179,18 @@ export default function DisenoWeb() {
                     if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
                     if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
                   }}
-                  className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto">
+                  className="inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto">
                   Empezar ahora — desde 349€ →
                 </a>
                 <a href={wa(INFO_MSG)} target="_blank" rel="noopener noreferrer" data-event="diseno-hero-wa"
-                  className="inline-flex items-center justify-center border border-white/15 text-neutral-300 hover:text-white hover:border-white/30 font-semibold px-8 py-4 rounded-full text-sm transition-all hover:bg-white/5 w-full sm:w-auto">
+                  className="inline-flex items-center justify-center border border-stone-300 text-stone-700 hover:text-stone-900 hover:border-stone-900 font-semibold px-8 py-4 rounded-full text-sm transition-all hover:bg-stone-100 w-full sm:w-auto">
                   Tengo dudas, escríbenos
                 </a>
               </div>
               <div className="flex flex-wrap items-center gap-5 mt-8">
                 {["Pago seguro con Stripe", "Desde 349€", "Lista en 7-14 días"].map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-neutral-500 text-xs">
-                    <span className="w-1 h-1 rounded-full bg-orange-500/70 flex-shrink-0" />
+                  <span key={item} className="flex items-center gap-2 text-stone-600 text-xs">
+                    <span className="w-1 h-1 rounded-full bg-orange-600 flex-shrink-0" />
                     {item}
                   </span>
                 ))}
@@ -201,18 +201,18 @@ export default function DisenoWeb() {
       </section>
 
       {/* ── WHY WEB MATTERS ── */}
-      <section className="bg-neutral-900 py-20">
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <Reveal>
-              <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">El problema</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-5 leading-tight">
+              <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">El problema</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 mb-5 leading-tight">
                 Una web que no convierte es dinero que no entra
               </h2>
-              <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+              <p className="text-stone-600 text-sm leading-relaxed mb-4">
                 La mayoría de webs de pequeñas empresas son folletos digitales: tienen información, pero no tienen una estructura pensada para que el visitante haga algo. No hay un botón de WhatsApp claro, los textos son genéricos y la web tarda demasiado en cargar en móvil.
               </p>
-              <p className="text-neutral-400 text-sm leading-relaxed">
+              <p className="text-stone-600 text-sm leading-relaxed">
                 El resultado: el visitante llega, no encuentra lo que busca, y se va. Nunca sabrás que estuvo ahí.
               </p>
             </Reveal>
@@ -225,15 +225,15 @@ export default function DisenoWeb() {
                   { bad: "Google no te encuentra", good: "SEO técnico configurado desde el inicio" },
                 ].map((item) => (
                   <div key={item.bad} className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 flex items-start gap-2.5">
-                      <span className="text-red-500/60 text-xs mt-0.5 flex-shrink-0">✕</span>
-                      <p className="text-neutral-500 text-xs leading-snug">{item.bad}</p>
+                    <div className="rounded-xl border border-stone-200 bg-white p-4 flex items-start gap-2.5">
+                      <span className="text-red-500 text-xs mt-0.5 flex-shrink-0">✕</span>
+                      <p className="text-stone-600 text-xs leading-snug">{item.bad}</p>
                     </div>
-                    <div className="rounded-xl border border-orange-500/20 bg-orange-500/[0.03] p-4 flex items-start gap-2.5">
+                    <div className="rounded-xl border border-orange-200 bg-orange-50 p-4 flex items-start gap-2.5">
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="flex-shrink-0 mt-0.5">
                         <path d="M2 6l3 3 5-5" stroke="#f97316" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                      <p className="text-neutral-300 text-xs leading-snug">{item.good}</p>
+                      <p className="text-stone-700 text-xs leading-snug">{item.good}</p>
                     </div>
                   </div>
                 ))}
@@ -244,25 +244,25 @@ export default function DisenoWeb() {
       </section>
 
       {/* ── WHAT'S INCLUDED ── */}
-      <section className="bg-neutral-950 py-20">
+      <section className="bg-[#FAF9F6] py-20">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <Reveal className="mb-12">
-            <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">Qué incluye</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 leading-tight max-w-xl">
+            <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">Qué incluye</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 leading-tight max-w-xl">
               Todo lo que necesitas para tener una web que funcione
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {FEATURES.map((item, i) => (
               <Reveal key={item.title} delay={i * 60}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 h-full flex flex-col">
-                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-5 flex-shrink-0">
+                <div className="rounded-2xl border border-stone-200 bg-white p-7 h-full flex flex-col">
+                  <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center mb-5 flex-shrink-0">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <path d="M2 7l3.5 3.5L12 3" stroke="#f97316" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
-                  <h3 className="text-white font-bold text-sm mb-2 leading-snug">{item.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{item.desc}</p>
+                  <h3 className="text-stone-900 font-bold text-sm mb-2 leading-snug">{item.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed flex-1">{item.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -271,15 +271,15 @@ export default function DisenoWeb() {
       </section>
 
       {/* ── FOR WHO ── */}
-      <section className="bg-neutral-900 py-20">
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <Reveal>
-              <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">Para quién es</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-5 leading-tight">
+              <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">Para quién es</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 mb-5 leading-tight">
                 Para cualquier negocio que necesite una web que trabaje por él
               </h2>
-              <p className="text-neutral-400 text-sm leading-relaxed">
+              <p className="text-stone-600 text-sm leading-relaxed">
                 Trabajamos con negocios locales y de servicios que necesitan una presencia digital profesional. No importa si partes de cero o si quieres sustituir una web vieja.
               </p>
             </Reveal>
@@ -295,8 +295,8 @@ export default function DisenoWeb() {
                   "Estudios, talleres y centros de formación",
                   "Cualquier negocio que quiera más clientes desde internet",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-neutral-300">
-                    <div className="w-5 h-5 rounded-full border border-orange-500/25 flex items-center justify-center flex-shrink-0">
+                  <li key={item} className="flex items-center gap-3 text-sm text-stone-700">
+                    <div className="w-5 h-5 rounded-full border border-orange-200 flex items-center justify-center flex-shrink-0">
                       <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                         <path d="M2 5l2.5 2.5 3.5-4" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
@@ -311,11 +311,11 @@ export default function DisenoWeb() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section className="bg-neutral-950 py-20">
+      <section className="bg-[#FAF9F6] py-20">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <Reveal className="mb-12">
-            <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">Proceso</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 leading-tight max-w-xl">
+            <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">Proceso</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 leading-tight max-w-xl">
               Cómo trabajamos contigo
             </h2>
           </Reveal>
@@ -327,10 +327,10 @@ export default function DisenoWeb() {
               { num: "04", title: "Entregamos y acompañamos", desc: "Publicamos tu web, te explicamos cómo funciona y quedamos disponibles para lo que necesites." },
             ].map((step, i) => (
               <Reveal key={step.num} delay={i * 80}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 h-full flex flex-col">
-                  <span className="text-[11px] font-black tabular-nums mb-4 block" style={{ color: "rgba(249,115,22,0.5)" }}>{step.num}</span>
-                  <h3 className="text-white font-bold text-sm mb-3 leading-snug">{step.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{step.desc}</p>
+                <div className="rounded-2xl border border-stone-200 bg-white p-7 h-full flex flex-col">
+                  <span className="text-[11px] font-black tabular-nums mb-4 block" style={{ color: "#ea580c" }}>{step.num}</span>
+                  <h3 className="text-stone-900 font-bold text-sm mb-3 leading-snug">{step.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed flex-1">{step.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -339,36 +339,36 @@ export default function DisenoWeb() {
       </section>
 
       {/* ── PLANS ── */}
-      <section className="bg-neutral-900 py-20">
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <Reveal className="mb-10">
-            <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">Planes y precios</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 leading-tight max-w-xl">
+            <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">Planes y precios</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 leading-tight max-w-xl">
               Web profesional desde 349€
             </h2>
-            <p className="text-neutral-400 text-sm mt-3 max-w-md">Sin letra pequeña, sin permanencias. Sabes exactamente qué pagas y qué obtienes.</p>
+            <p className="text-stone-600 text-sm mt-3 max-w-md">Sin letra pequeña, sin permanencias. Sabes exactamente qué pagas y qué obtienes.</p>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             {PLANS.map((plan, i) => (
               <Reveal key={plan.name} delay={i * 80}>
-                <div className={`rounded-2xl p-7 h-full flex flex-col ${plan.popular ? "border border-orange-500/30 bg-orange-500/[0.05]" : "border border-white/[0.07] bg-white/[0.025]"}`}>
+                <div className={`rounded-2xl p-7 h-full flex flex-col ${plan.popular ? "border border-orange-300 bg-orange-50" : "border border-stone-200 bg-white"}`}>
                   {plan.popular && (
-                    <div className="inline-flex items-center gap-1.5 bg-orange-500/15 border border-orange-500/20 rounded-full px-3 py-1 mb-4 self-start">
-                      <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-                      <span className="text-orange-400 text-[11px] font-semibold tracking-wide">Más solicitado</span>
+                    <div className="inline-flex items-center gap-1.5 bg-orange-100 border border-orange-200 rounded-full px-3 py-1 mb-4 self-start">
+                      <span className="w-1.5 h-1.5 rounded-full bg-orange-600" />
+                      <span className="text-orange-600 text-[11px] font-semibold tracking-wide">Más solicitado</span>
                     </div>
                   )}
-                  <h3 className="text-white font-bold text-lg mb-1">{plan.name}</h3>
-                  <p className="text-orange-400 font-black text-3xl mb-1">{plan.price}</p>
-                  <p className="text-neutral-600 text-xs mb-4">pago único</p>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1 mb-6">{plan.desc}</p>
+                  <h3 className="text-stone-900 font-bold text-lg mb-1">{plan.name}</h3>
+                  <p className="text-orange-600 font-black text-3xl mb-1">{plan.price}</p>
+                  <p className="text-stone-600 text-xs mb-4">pago único</p>
+                  <p className="text-stone-600 text-sm leading-relaxed flex-1 mb-6">{plan.desc}</p>
                   {plan.stripe && (
                     <a
                       href={plan.stripe}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-event={`diseno-stripe-${plan.name.toLowerCase().replace(/\s+/g, "-")}`}
-                      className={`block text-center font-bold py-3.5 rounded-full text-sm transition-all hover:-translate-y-0.5 ${plan.popular ? "bg-orange-500 hover:bg-orange-400 text-white" : "bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/20"}`}
+                      className={`block text-center font-bold py-3.5 rounded-full text-sm transition-all hover:-translate-y-0.5 ${plan.popular ? "bg-orange-600 hover:bg-orange-500 text-white" : "bg-orange-50 hover:bg-orange-100 text-orange-600 border border-orange-200"}`}
                     >
                       Contratar ahora — {plan.price}
                     </a>
@@ -378,7 +378,7 @@ export default function DisenoWeb() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-event={`diseno-wa-${plan.name.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="block text-center text-neutral-500 hover:text-neutral-300 text-xs py-2 transition-colors duration-200"
+                    className="block text-center text-stone-600 hover:text-stone-700 text-xs py-2 transition-colors duration-200"
                   >
                     Tengo dudas, escríbenos
                   </a>
@@ -390,24 +390,24 @@ export default function DisenoWeb() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="bg-neutral-950 py-20">
+      <section className="bg-[#FAF9F6] py-20">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <Reveal className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
-                <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">FAQ</span>
-                <h2 className="text-3xl font-bold text-white mt-3 mb-4 leading-tight">Preguntas frecuentes sobre diseño web</h2>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-7">
+                <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">FAQ</span>
+                <h2 className="text-3xl font-bold text-stone-900 mt-3 mb-4 leading-tight">Preguntas frecuentes sobre diseño web</h2>
+                <p className="text-stone-600 text-sm leading-relaxed mb-7">
                   Si tienes alguna duda que no aparece aquí, escríbenos por WhatsApp y te respondemos en menos de 24 horas.
                 </p>
                 <a href={wa(INFO_MSG)} target="_blank" rel="noopener noreferrer" data-event="diseno-faq-wa"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors shadow-md shadow-orange-500/20 w-full sm:w-auto justify-center">
+                  className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors shadow-md shadow-orange-500/20 w-full sm:w-auto justify-center">
                   Hacer una pregunta →
                 </a>
               </div>
             </Reveal>
             <Reveal className="lg:col-span-8" delay={100}>
-              <div className="rounded-2xl border border-white/[0.06] bg-neutral-900 px-7 py-2">
+              <div className="rounded-2xl border border-stone-200 bg-white px-7 py-2">
                 {FAQS.map((faq) => (
                   <FAQItem key={faq.q} question={faq.q} answer={faq.a} />
                 ))}
@@ -418,10 +418,10 @@ export default function DisenoWeb() {
       </section>
 
       {/* ── RELATED SERVICES ── */}
-      <section className="bg-neutral-900 py-16">
+      <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-5 lg:px-10">
           <Reveal className="mb-8">
-            <p className="text-neutral-500 text-xs font-semibold tracking-widest uppercase">También puede interesarte</p>
+            <p className="text-stone-600 text-xs font-semibold tracking-widest uppercase">También puede interesarte</p>
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
@@ -429,10 +429,10 @@ export default function DisenoWeb() {
               { title: "Google Ads", desc: "Si quieres clientes desde el primer día, los anuncios en Google son el complemento perfecto a una web bien hecha.", href: "/google-ads", cta: "Ver Google Ads" },
             ].map((item) => (
               <Reveal key={item.title} delay={80}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 flex flex-col">
-                  <h3 className="text-white font-bold text-base mb-2">{item.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1 mb-5">{item.desc}</p>
-                  <Link to={item.href} className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 text-sm font-semibold transition-colors">
+                <div className="rounded-2xl border border-stone-200 bg-white p-7 flex flex-col">
+                  <h3 className="text-stone-900 font-bold text-base mb-2">{item.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed flex-1 mb-5">{item.desc}</p>
+                  <Link to={item.href} className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-600 text-sm font-semibold transition-colors">
                     {item.cta} →
                   </Link>
                 </div>
@@ -443,18 +443,18 @@ export default function DisenoWeb() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="relative bg-neutral-950 py-24 overflow-hidden">
+      <section className="relative bg-[#FAF9F6] py-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(249,115,22,0.09) 0%, transparent 60%)" }} />
         <div className="relative z-10 max-w-3xl mx-auto px-5 lg:px-10 text-center">
           <Reveal>
-            <span className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-1.5 mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-              <span className="text-orange-400 text-xs font-semibold uppercase tracking-widest">Siguiente paso</span>
+            <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-4 py-1.5 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-600" />
+              <span className="text-orange-600 text-xs font-semibold uppercase tracking-widest">Siguiente paso</span>
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 leading-tight mb-4">
               Solicita tu presupuesto hoy
             </h2>
-            <p className="text-neutral-400 text-base leading-relaxed mb-8 max-w-md mx-auto">
+            <p className="text-stone-600 text-base leading-relaxed mb-8 max-w-md mx-auto">
               Escríbenos por WhatsApp y te respondemos con un presupuesto detallado en menos de 24 horas. Sin compromiso, sin letra pequeña.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -467,11 +467,11 @@ export default function DisenoWeb() {
                   if (window.fbq) window.fbq("track", "InitiateCheckout", { value: 349, currency: "EUR", content_name: "Web Starter", content_ids: ["starter"] });
                   if (window.dataLayer) window.dataLayer.push({ event: "initiate_checkout", plan: "starter", value: 349 });
                 }}
-                className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-400 text-white font-bold px-10 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto">
+                className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-500 text-white font-bold px-10 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25 w-full sm:w-auto">
                 Empezar ahora — desde 349€ →
               </a>
               <a href={wa(CTA_MSG)} target="_blank" rel="noopener noreferrer" data-event="diseno-bottom-wa"
-                className="inline-flex items-center justify-center border border-white/15 text-neutral-300 hover:text-white hover:border-white/30 font-semibold px-10 py-4 rounded-full text-sm transition-all hover:bg-white/5 w-full sm:w-auto">
+                className="inline-flex items-center justify-center border border-stone-300 text-stone-700 hover:text-stone-900 hover:border-stone-900 font-semibold px-10 py-4 rounded-full text-sm transition-all hover:bg-stone-100 w-full sm:w-auto">
                 Preguntar por WhatsApp
               </a>
             </div>

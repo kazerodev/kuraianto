@@ -39,6 +39,26 @@
     {
       "source": "/gracias",
       "destination": "/index.html"
+    },
+    {
+      "source": "/empezar",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/webs",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/kit-ia",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/kit-ia/gracias",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/kit-ia/condiciones",
+      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -67,7 +87,20 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://ssl.google-analytics.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.facebook.com https://connect.facebook.net https://www.googletagmanager.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests;"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://ssl.google-analytics.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self' https://eskbissmbhfsnypyugqa.supabase.co https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.facebook.com https://connect.facebook.net https://www.googletagmanager.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; upgrade-insecure-requests;"
+        }
+      ]
+    },
+    {
+      "source": "/descargas/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
         }
       ]
     }

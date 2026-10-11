@@ -15,15 +15,15 @@ const content = {
         },
         {
           h: "2. Datos que recopilamos",
-          p: "Recopilamos únicamente los datos que el usuario facilita voluntariamente a través del formulario de contacto: nombre, teléfono (opcional) y el mensaje enviado. No recopilamos datos de forma automática salvo los inherentes a cualquier conexión web (IP, navegador, sistema operativo) registrados de forma anónima.",
+          p: "Recopilamos únicamente los datos que el usuario facilita voluntariamente: en el formulario de contacto, nombre, teléfono (opcional) y el mensaje enviado; al descargar los recursos gratuitos, el email y, de forma opcional, el tipo de negocio y la campaña publicitaria de origen; y al comprar un producto digital, los datos que Stripe nos facilita para gestionar el pago y la factura (nombre, email y país). No recopilamos datos de forma automática salvo los inherentes a cualquier conexión web (IP, navegador, sistema operativo) registrados de forma anónima.",
         },
         {
           h: "3. Finalidad del tratamiento",
-          p: "Los datos facilitados se utilizan exclusivamente para responder a las consultas del usuario y gestionar la relación comercial derivada del interés en nuestros servicios. No utilizamos los datos para ninguna otra finalidad.",
+          p: "Los datos facilitados se utilizan para responder a las consultas del usuario, gestionar la relación comercial, entregar los productos digitales comprados y sus actualizaciones y, solo si el usuario lo ha aceptado al descargar un recurso gratuito, enviarle emails con consejos y ofertas de Kuraianto. El usuario puede darse de baja de estos emails en cualquier momento.",
         },
         {
           h: "4. Base legal",
-          p: "El tratamiento se basa en el consentimiento del usuario, otorgado al enviar el formulario de contacto, y en el interés legítimo de Kuraianto para responder a consultas comerciales.",
+          p: "El tratamiento se basa en el consentimiento del usuario, otorgado al enviar un formulario, en la ejecución del contrato cuando compra un producto o servicio, y en el interés legítimo de Kuraianto para responder a consultas comerciales.",
         },
         {
           h: "5. Conservación de datos",
@@ -31,7 +31,7 @@ const content = {
         },
         {
           h: "6. Destinatarios",
-          p: "No cedemos ni vendemos los datos a terceros. Únicamente podremos comunicarlos a proveedores de servicio que actúen como encargados del tratamiento (por ejemplo, plataformas de comunicación como WhatsApp/Meta y herramientas de mensajería), siempre bajo acuerdo de confidencialidad y dentro del marco legal vigente.",
+          p: "No cedemos ni vendemos los datos a terceros. Únicamente podremos comunicarlos a proveedores de servicio que actúen como encargados del tratamiento (por ejemplo, plataformas de comunicación como WhatsApp/Meta, herramientas de mensajería, la pasarela de pago Stripe y Supabase, donde se almacenan de forma segura en la Unión Europea los datos y archivos que el cliente envía en el formulario de inicio de su web), siempre bajo acuerdo de confidencialidad y dentro del marco legal vigente.",
         },
         {
           h: "7. Derechos del usuario",
@@ -165,7 +165,7 @@ const content = {
         },
         {
           h: "6. Recipients",
-          p: "We do not share or sell data to third parties. We may only communicate them to service providers acting as data processors (e.g., communication platforms such as WhatsApp/Meta and messaging tools), always under a confidentiality agreement and within the current legal framework.",
+          p: "We do not share or sell data to third parties. We may only communicate them to service providers acting as data processors (e.g., communication platforms such as WhatsApp/Meta, messaging tools, the Stripe payment gateway and Supabase, where the data and files a client submits in the website start form are stored securely in the European Union), always under a confidentiality agreement and within the current legal framework.",
         },
         {
           h: "7. User rights",
@@ -278,8 +278,8 @@ const content = {
 function Section({ h, p }) {
   return (
     <div className="mb-8">
-      <h2 className="text-white font-semibold text-base mb-2">{h}</h2>
-      <p className="text-neutral-400 text-sm leading-relaxed whitespace-pre-line">{p}</p>
+      <h2 className="text-stone-900 font-semibold text-base mb-2">{h}</h2>
+      <p className="text-stone-600 text-sm leading-relaxed whitespace-pre-line">{p}</p>
     </div>
   );
 }
@@ -337,25 +337,25 @@ function Politicas() {
   };
 
   return (
-    <div className="bg-neutral-950 min-h-screen">
+    <div className="bg-[#FAF9F6] min-h-screen">
       <Helmet>
         <title>{metaTitles[lang][active]}</title>
         <meta name="robots" content="noindex, follow" />
         <link rel="canonical" href="https://kuraianto.com/politicas" />
       </Helmet>
       <div className="max-w-4xl mx-auto px-6 py-16">
-        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">{t.footer.legal_title}</p>
-        <h1 className="text-3xl md:text-4xl font-bold text-white mb-10">{pol.title}</h1>
+        <p className="text-orange-600 text-xs font-semibold uppercase tracking-widest mb-3">{t.footer.legal_title}</p>
+        <h1 className="text-3xl md:text-4xl font-bold text-stone-900 mb-10">{pol.title}</h1>
 
-        <div className="flex flex-wrap gap-2 mb-12 border-b border-white/5 pb-6">
+        <div className="flex flex-wrap gap-2 mb-12 border-b border-stone-200 pb-6">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => handleTab(tab.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 active === tab.id
-                  ? "bg-orange-500 text-white"
-                  : "text-neutral-400 border border-neutral-800 hover:border-neutral-600 hover:text-white"
+                  ? "bg-orange-600 text-white"
+                  : "text-stone-600 border border-stone-200 hover:border-stone-400 hover:text-stone-900"
               }`}
             >
               {tab.label}
@@ -369,7 +369,7 @@ function Politicas() {
           ))}
         </div>
 
-        <p className="text-neutral-600 text-xs mt-12 border-t border-white/5 pt-6">
+        <p className="text-stone-600 text-xs mt-12 border-t border-stone-200 pt-6">
           {{ es: "Última actualización: mayo de 2026", en: "Last updated: May 2026", nl: "Laatste update: mei 2026", fr: "Dernière mise à jour : mai 2026" }[lang] || "Last updated: May 2026"} · Kuraianto · kuraianto.com
         </p>
       </div>

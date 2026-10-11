@@ -22,7 +22,7 @@ function Reveal({ children, delay = 0, className = "" }) {
     return () => obs.disconnect();
   }, []);
   return (
-    <div ref={ref} className={className} style={{ opacity: v ? 1 : 0, transform: v ? "none" : "translateY(22px)", transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms` }}>
+    <div ref={ref} className={className} style={{ opacity: 1, transform: v ? "none" : "translateY(14px)", transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms` }}>
       {children}
     </div>
   );
@@ -31,14 +31,14 @@ function Reveal({ children, delay = 0, className = "" }) {
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className={`border-b last:border-0 transition-colors duration-300 ${open ? "border-orange-500/15" : "border-white/[0.07]"}`}>
+    <div className={`border-b last:border-0 transition-colors duration-300 ${open ? "border-orange-200" : "border-stone-200"}`}>
       <button type="button" onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-start gap-5 text-left py-5 bg-transparent border-0 cursor-pointer group"
       >
-        <span className={`font-medium text-sm leading-snug transition-colors duration-200 ${open ? "text-white" : "text-neutral-300 group-hover:text-white"}`}>
+        <span className={`font-medium text-sm leading-snug transition-colors duration-200 ${open ? "text-stone-900" : "text-stone-700 group-hover:text-stone-900"}`}>
           {question}
         </span>
-        <span className={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300 ${open ? "bg-orange-500 border-orange-500 text-white" : "border-white/15 text-neutral-500 group-hover:border-orange-500/50 group-hover:text-orange-400"}`}
+        <span className={`flex-shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300 ${open ? "bg-orange-600 border-orange-500 text-white" : "border-stone-300 text-stone-500 group-hover:border-orange-500/50 group-hover:text-orange-600"}`}
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
             <path d="M5 1v8M1 5h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
@@ -46,7 +46,7 @@ function FAQItem({ question, answer }) {
         </span>
       </button>
       <div style={{ maxHeight: open ? "600px" : "0", overflow: "hidden", transition: "max-height 0.38s ease" }}>
-        <p className="pb-5 text-neutral-400 text-sm leading-relaxed pr-10">{answer}</p>
+        <p className="pb-5 text-stone-600 text-sm leading-relaxed pr-10">{answer}</p>
       </div>
     </div>
   );
@@ -71,7 +71,7 @@ const FAQS = [
 
 export default function SeoLocal() {
   return (
-    <div className="bg-neutral-950 overflow-x-hidden">
+    <div className="bg-[#FAF9F6] overflow-x-hidden">
       <Helmet>
         <html lang="es" />
         <title>SEO Local para Negocios en España | Posicionamiento en Google | Kuraianto</title>
@@ -141,30 +141,30 @@ export default function SeoLocal() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
           <Reveal>
             <div className="max-w-3xl">
-              <span className="inline-flex items-center gap-2 text-orange-400 text-xs font-semibold tracking-widest uppercase mb-6">
-                <span className="w-6 h-px bg-orange-500" />
+              <span className="inline-flex items-center gap-2 text-orange-600 text-xs font-semibold tracking-widest uppercase mb-6">
+                <span className="w-6 h-px bg-orange-600" />
                 SEO Local
               </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 leading-tight mb-6">
                 SEO local: aparece en Google cuando te buscan en tu ciudad
               </h1>
-              <p className="text-neutral-400 text-lg leading-relaxed mb-8 max-w-xl">
+              <p className="text-stone-600 text-lg leading-relaxed mb-8 max-w-xl">
                 Posicionamiento en Google orientado a negocios locales. Tráfico orgánico real, sin pagar por cada clic. Resultados medibles mes a mes.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a href={wa(DEMO_MSG)} target="_blank" rel="noopener noreferrer" data-event="seo-hero-demo"
-                  className="inline-flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25">
+                  className="inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-8 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25">
                   Pedir auditoría gratuita
                 </a>
                 <a href={wa(INFO_MSG)} target="_blank" rel="noopener noreferrer" data-event="seo-hero-wa"
-                  className="inline-flex items-center justify-center border border-white/15 text-neutral-300 hover:text-white hover:border-white/30 font-semibold px-8 py-4 rounded-full text-sm transition-all hover:bg-white/5">
+                  className="inline-flex items-center justify-center border border-stone-300 text-stone-700 hover:text-stone-900 hover:border-stone-900 font-semibold px-8 py-4 rounded-full text-sm transition-all hover:bg-stone-100">
                   Preguntar por WhatsApp
                 </a>
               </div>
               <div className="flex flex-wrap items-center gap-5 mt-8">
                 {["Auditoría gratuita", "Sin permanencias", "Informes mensuales reales"].map((item) => (
-                  <span key={item} className="flex items-center gap-2 text-neutral-500 text-xs">
-                    <span className="w-1 h-1 rounded-full bg-orange-500/70 flex-shrink-0" />
+                  <span key={item} className="flex items-center gap-2 text-stone-600 text-xs">
+                    <span className="w-1 h-1 rounded-full bg-orange-600 flex-shrink-0" />
                     {item}
                   </span>
                 ))}
@@ -175,26 +175,26 @@ export default function SeoLocal() {
       </section>
 
       {/* ── WHAT IS SEO LOCAL ── */}
-      <section className="bg-neutral-900 py-20">
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <Reveal>
-              <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">Qué es</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-5 leading-tight">
+              <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">Qué es</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 mb-5 leading-tight">
                 Qué significa aparecer en Google cuando alguien busca tu servicio
               </h2>
-              <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+              <p className="text-stone-600 text-sm leading-relaxed mb-4">
                 Cuando alguien escribe "clínica dental Madrid" o "fontanero urgente Bilbao", Google muestra primero los resultados locales: el mapa con fichas de Google Maps y una lista de negocios de la zona. Ese espacio es el que ocupa el SEO local.
               </p>
-              <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+              <p className="text-stone-600 text-sm leading-relaxed mb-4">
                 No se trata de aparecer para cualquier búsqueda. Se trata de aparecer exactamente cuando alguien de tu zona está buscando lo que tú ofreces.
               </p>
-              <p className="text-neutral-400 text-sm leading-relaxed">
+              <p className="text-stone-600 text-sm leading-relaxed">
                 A diferencia de los anuncios de pago, el tráfico orgánico no tiene coste por clic. Una vez que estás bien posicionado, Google te envía visitas sin que pagues por cada una.
               </p>
             </Reveal>
             <Reveal delay={120}>
-              <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-8 space-y-6">
+              <div className="rounded-2xl border border-stone-200 bg-white p-8 space-y-6">
                 {[
                   { step: "01", text: "Alguien en tu ciudad busca tu servicio en Google" },
                   { step: "02", text: "Google muestra negocios locales relevantes en el mapa y en los resultados" },
@@ -202,8 +202,8 @@ export default function SeoLocal() {
                   { step: "04", text: "El cliente visita tu web o te llama directamente desde Google Maps" },
                 ].map((item) => (
                   <div key={item.step} className="flex items-start gap-4">
-                    <span className="text-[11px] font-black tabular-nums flex-shrink-0 pt-0.5" style={{ color: "rgba(249,115,22,0.5)" }}>{item.step}</span>
-                    <p className="text-neutral-300 text-sm leading-snug">{item.text}</p>
+                    <span className="text-[11px] font-black tabular-nums flex-shrink-0 pt-0.5" style={{ color: "#ea580c" }}>{item.step}</span>
+                    <p className="text-stone-700 text-sm leading-snug">{item.text}</p>
                   </div>
                 ))}
               </div>
@@ -213,25 +213,25 @@ export default function SeoLocal() {
       </section>
 
       {/* ── WHAT'S INCLUDED ── */}
-      <section className="bg-neutral-950 py-20">
+      <section className="bg-[#FAF9F6] py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <Reveal className="mb-12">
-            <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">Qué incluye</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 leading-tight max-w-xl">
+            <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">Qué incluye</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 leading-tight max-w-xl">
               Un trabajo SEO completo, no acciones sueltas
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {FEATURES.map((item, i) => (
               <Reveal key={item.title} delay={i * 60}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 h-full flex flex-col">
-                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-5 flex-shrink-0">
+                <div className="rounded-2xl border border-stone-200 bg-white p-7 h-full flex flex-col">
+                  <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center mb-5 flex-shrink-0">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                       <path d="M2 7l3.5 3.5L12 3" stroke="#f97316" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
-                  <h3 className="text-white font-bold text-sm mb-2 leading-snug">{item.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{item.desc}</p>
+                  <h3 className="text-stone-900 font-bold text-sm mb-2 leading-snug">{item.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed flex-1">{item.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -240,15 +240,15 @@ export default function SeoLocal() {
       </section>
 
       {/* ── FOR WHO ── */}
-      <section className="bg-neutral-900 py-20">
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <Reveal>
-              <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">Para quién es</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-5 leading-tight">
+              <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">Para quién es</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 mb-5 leading-tight">
                 Para negocios que viven de clientes en su zona
               </h2>
-              <p className="text-neutral-400 text-sm leading-relaxed">
+              <p className="text-stone-600 text-sm leading-relaxed">
                 El SEO local tiene más sentido cuando tu cliente ideal es alguien que vive o trabaja cerca de ti. Si vendes a toda España o solo online, el SEO local es parte de la estrategia pero no el único canal.
               </p>
             </Reveal>
@@ -264,8 +264,8 @@ export default function SeoLocal() {
                   "Tiendas físicas con presencia online",
                   "Cualquier profesional que atienda clientela local",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-neutral-300">
-                    <div className="w-5 h-5 rounded-full border border-orange-500/25 flex items-center justify-center flex-shrink-0">
+                  <li key={item} className="flex items-center gap-3 text-sm text-stone-700">
+                    <div className="w-5 h-5 rounded-full border border-orange-200 flex items-center justify-center flex-shrink-0">
                       <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                         <path d="M2 5l2.5 2.5 3.5-4" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
@@ -280,21 +280,21 @@ export default function SeoLocal() {
       </section>
 
       {/* ── HONEST TIMELINE ── */}
-      <section className="bg-neutral-950 py-20">
+      <section className="bg-[#FAF9F6] py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <Reveal>
-            <div className="max-w-3xl mx-auto rounded-2xl border border-orange-500/20 bg-orange-500/[0.04] p-8 md:p-10">
-              <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase block mb-4">Plazos reales</span>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-5 leading-tight">
+            <div className="max-w-3xl mx-auto rounded-2xl border border-orange-200 bg-orange-50 p-8 md:p-10">
+              <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase block mb-4">Plazos reales</span>
+              <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-5 leading-tight">
                 El SEO tarda. Aquí te lo explicamos con honestidad.
               </h2>
-              <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+              <p className="text-stone-600 text-sm leading-relaxed mb-4">
                 El SEO orgánico no es inmediato. Los primeros resultados claros suelen aparecer entre los 3 y 6 meses. Factores como la competencia de tu sector en tu zona, la antigüedad y autoridad del dominio y la consistencia del trabajo mes a mes influyen directamente.
               </p>
-              <p className="text-neutral-400 text-sm leading-relaxed mb-4">
+              <p className="text-stone-600 text-sm leading-relaxed mb-4">
                 Cualquier agencia que te prometa posición 1 en Google en 30 días está mintiendo. El posicionamiento orgánico es un proceso, no un interruptor.
               </p>
-              <p className="text-neutral-300 text-sm font-medium">
+              <p className="text-stone-700 text-sm font-medium">
                 Lo que sí te podemos garantizar: trabajo consistente, datos reales cada mes y comunicación directa si algo no está funcionando.
               </p>
             </div>
@@ -303,11 +303,11 @@ export default function SeoLocal() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section className="bg-neutral-900 py-20">
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <Reveal className="mb-12">
-            <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">Proceso</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 leading-tight max-w-xl">
+            <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">Proceso</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-3 leading-tight max-w-xl">
               Cómo trabajamos el SEO mes a mes
             </h2>
           </Reveal>
@@ -319,10 +319,10 @@ export default function SeoLocal() {
               { num: "04", title: "Seguimiento mensual", desc: "Informe cada mes con datos reales de posicionamiento, tráfico orgánico y evolución. Ajustamos la estrategia si hace falta." },
             ].map((step, i) => (
               <Reveal key={step.num} delay={i * 80}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 h-full flex flex-col">
-                  <span className="text-[11px] font-black tabular-nums mb-4 block" style={{ color: "rgba(249,115,22,0.5)" }}>{step.num}</span>
-                  <h3 className="text-white font-bold text-sm mb-3 leading-snug">{step.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1">{step.desc}</p>
+                <div className="rounded-2xl border border-stone-200 bg-white p-7 h-full flex flex-col">
+                  <span className="text-[11px] font-black tabular-nums mb-4 block" style={{ color: "#ea580c" }}>{step.num}</span>
+                  <h3 className="text-stone-900 font-bold text-sm mb-3 leading-snug">{step.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed flex-1">{step.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -331,24 +331,24 @@ export default function SeoLocal() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="bg-neutral-950 py-20">
+      <section className="bg-[#FAF9F6] py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <Reveal className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
-                <span className="text-orange-400 text-xs font-semibold tracking-widest uppercase">FAQ</span>
-                <h2 className="text-3xl font-bold text-white mt-3 mb-4 leading-tight">Preguntas frecuentes sobre SEO local</h2>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-7">
+                <span className="text-orange-600 text-xs font-semibold tracking-widest uppercase">FAQ</span>
+                <h2 className="text-3xl font-bold text-stone-900 mt-3 mb-4 leading-tight">Preguntas frecuentes sobre SEO local</h2>
+                <p className="text-stone-600 text-sm leading-relaxed mb-7">
                   Si tienes alguna duda que no aparece aquí, escríbenos por WhatsApp y te respondemos en menos de 24 horas.
                 </p>
                 <a href={wa(INFO_MSG)} target="_blank" rel="noopener noreferrer" data-event="seo-faq-wa"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors shadow-md shadow-orange-500/20">
+                  className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors shadow-md shadow-orange-500/20">
                   Hacer una pregunta <span>→</span>
                 </a>
               </div>
             </Reveal>
             <Reveal className="lg:col-span-8" delay={100}>
-              <div className="rounded-2xl border border-white/[0.06] bg-neutral-900 px-7 py-2">
+              <div className="rounded-2xl border border-stone-200 bg-white px-7 py-2">
                 {FAQS.map((faq) => (
                   <FAQItem key={faq.q} question={faq.q} answer={faq.a} />
                 ))}
@@ -359,10 +359,10 @@ export default function SeoLocal() {
       </section>
 
       {/* ── RELATED SERVICES ── */}
-      <section className="bg-neutral-900 py-16">
+      <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <Reveal className="mb-8">
-            <p className="text-neutral-500 text-xs font-semibold tracking-widest uppercase">También puede interesarte</p>
+            <p className="text-stone-600 text-xs font-semibold tracking-widest uppercase">También puede interesarte</p>
           </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
@@ -370,10 +370,10 @@ export default function SeoLocal() {
               { title: "Google Ads", desc: "Mientras el SEO coge velocidad, los anuncios en Google te dan visibilidad inmediata sin esperar meses.", href: "/google-ads", cta: "Ver Google Ads" },
             ].map((item) => (
               <Reveal key={item.title} delay={80}>
-                <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-7 flex flex-col">
-                  <h3 className="text-white font-bold text-base mb-2">{item.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed flex-1 mb-5">{item.desc}</p>
-                  <Link to={item.href} className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 text-sm font-semibold transition-colors">
+                <div className="rounded-2xl border border-stone-200 bg-white p-7 flex flex-col">
+                  <h3 className="text-stone-900 font-bold text-base mb-2">{item.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed flex-1 mb-5">{item.desc}</p>
+                  <Link to={item.href} className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-600 text-sm font-semibold transition-colors">
                     {item.cta} →
                   </Link>
                 </div>
@@ -384,27 +384,27 @@ export default function SeoLocal() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="relative bg-neutral-950 py-24 overflow-hidden">
+      <section className="relative bg-[#FAF9F6] py-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(249,115,22,0.09) 0%, transparent 60%)" }} />
         <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-10 text-center">
           <Reveal>
-            <span className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-1.5 mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
-              <span className="text-orange-400 text-xs font-semibold uppercase tracking-widest">Primer paso</span>
+            <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-4 py-1.5 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-600" />
+              <span className="text-orange-600 text-xs font-semibold uppercase tracking-widest">Primer paso</span>
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-stone-900 leading-tight mb-4">
               Solicita una auditoría SEO gratuita
             </h2>
-            <p className="text-neutral-400 text-base leading-relaxed mb-8 max-w-md mx-auto">
+            <p className="text-stone-600 text-base leading-relaxed mb-8 max-w-md mx-auto">
               Analizamos tu posición actual, la de tu competencia y te explicamos qué se puede mejorar. Sin compromiso y sin coste.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href={wa(DEMO_MSG)} target="_blank" rel="noopener noreferrer" data-event="seo-bottom-demo"
-                className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-400 text-white font-bold px-10 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25">
+                className="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-500 text-white font-bold px-10 py-4 rounded-full text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/25">
                 Pedir auditoría gratuita
               </a>
               <a href={wa(INFO_MSG)} target="_blank" rel="noopener noreferrer" data-event="seo-bottom-wa"
-                className="inline-flex items-center justify-center border border-white/15 text-neutral-300 hover:text-white hover:border-white/30 font-semibold px-10 py-4 rounded-full text-sm transition-all hover:bg-white/5">
+                className="inline-flex items-center justify-center border border-stone-300 text-stone-700 hover:text-stone-900 hover:border-stone-900 font-semibold px-10 py-4 rounded-full text-sm transition-all hover:bg-stone-100">
                 Preguntar por WhatsApp
               </a>
             </div>
